@@ -99,7 +99,7 @@ export default function Home() {
 
       {/* Projects Section */}
       <section id="projects" className="min-h-screen py-20">
-        <div className="max-w-6xl mx-auto px-4">
+        <div className="max-w-6xl mx-auto px-4 ">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
