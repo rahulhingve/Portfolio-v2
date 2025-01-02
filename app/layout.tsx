@@ -1,7 +1,13 @@
 import { Inter } from 'next/font/google'
 import './globals.css'
+import { ThemeProvider } from "@/components/theme-provider"
 
 const inter = Inter({ subsets: ['latin'] })
+
+export const metadata = {
+  title: 'Rahul Hingve - Software Engineer',
+  description: 'Portfolio of Rahul Hingve, a developer passionate about learning and building open-source software.',
+}
 
 export default function RootLayout({
   children,
@@ -9,8 +15,17 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="dark">
-      <body className={inter.className}>{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <body className={inter.className}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   )
 }
