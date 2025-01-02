@@ -1,21 +1,115 @@
-import { BottomBar } from '@/components/BottomBar'
-import { FloatingDockMenu } from '@/components/FloatingDock'
-import HeroSection from '@/components/Hero-Section'
-import { MyTimeLine } from '@/components/MyTimeLine'
+"use client"
 
-import React from 'react'
+import { motion, AnimatePresence } from "framer-motion"
+import { ThemeSwitcher } from "@/components/theme-switcher"
+import { LoadingAnimation } from "@/components/loading-animation"
+import { Homepage } from "@/components/homepage"
+import { TimelineSection } from "@/components/timeline"
+import { Projects } from "@/components/projects"
+import { Contact } from "@/components/contact"
+import { Footer } from "@/components/footer"
+import { FloatingDock } from "@/components/ui/floating-dock"
+import { useState, useEffect } from "react"
+import {
+  IconHome,
+  IconUser,
+  IconBriefcase,
+  IconMail,
+  IconDownload,
+} from "@tabler/icons-react"
 
-const page = () => {
+const navItems = [
+  {
+    title: "Home",
+    icon: <IconHome className="h-full w-full text-neutral-500 dark:text-neutral-300" />,
+    href: "#home",
+  },
+  {
+    title: "About",
+    icon: <IconUser className="h-full w-full text-neutral-500 dark:text-neutral-300" />,
+    href: "#about",
+  },
+  {
+    title: "Projects",
+    icon: <IconBriefcase className="h-full w-full text-neutral-500 dark:text-neutral-300" />,
+    href: "#projects",
+  },
+  {
+    title: "Contact",
+    icon: <IconMail className="h-full w-full text-neutral-500 dark:text-neutral-300" />,
+    href: "#contact",
+  },
+  {
+    title: "Resume",
+    icon: <IconDownload className="h-full w-full text-neutral-500 dark:text-neutral-300" />,
+    href: "/resume.pdf",
+  },
+];
+
+export default function Home() {
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    const timer = setTimeout(() => setIsLoading(false), 2000)
+    return () => clearTimeout(timer)
+  }, [])
+
   return (
-   <>
-   <div className='bg-black h-screen text-white' >
-    <FloatingDockMenu/>
-    <HeroSection/>
-    <MyTimeLine/>
-    <BottomBar/>
-   </div>
-   </>
+    <>
+      <AnimatePresence mode="wait">
+        {isLoading ? (
+          <motion.div
+            key="loader"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <LoadingAnimation />
+          </motion.div>
+        ) : (
+          <motion.div
+            key="page"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+            className="relative min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100"
+          >
+            <div className="relative z-10">
+              <header className="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm py-4">
+                <div className="container mx-auto px-4 flex justify-between items-center">
+                  <motion.h1 
+                    className="text-2xl font-bold"
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.2 }}
+                  >
+                    Rahul Hingve
+                  </motion.h1>
+                  <ThemeSwitcher />
+                </div>
+              </header>
+              <main>
+                <Homepage />
+                <TimelineSection />
+                <Projects />
+                <Contact />
+              </main>
+              <Footer />
+            </div>
+            <div className="fixed bottom-8 left-0 right-0 z-50 pointer-events-none">
+              <div className="max-w-7xl mx-auto px-4 pointer-events-auto">
+                <FloatingDock
+                  items={navItems}
+                  desktopClassName="mx-auto"
+                  mobileClassName="float-right"
+                />
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   )
 }
-
-export default page
