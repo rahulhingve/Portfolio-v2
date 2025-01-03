@@ -1,71 +1,76 @@
 "use client";
 
-import { Tabs } from "./ui/tabs";
-import { motion } from "framer-motion";
 import Image from "next/image";
-
-const projects = [
-  {
-    title: "Project Alpha",
-    description: "A revolutionary AI-powered task management system",
-    image: "/placeholder.svg?height=200&width=300",
-    link: "https://project-alpha.com",
-  },
-  {
-    title: "Beta App",
-    description: "Mobile application for seamless team collaboration",
-    image: "/placeholder.svg?height=200&width=300",
-    link: "https://beta-app.com",
-  },
-  {
-    title: "Gamma Platform",
-    description: "Cloud-based data analytics and visualization platform",
-    image: "/placeholder.svg?height=200&width=300",
-    link: "https://gamma-platform.com",
-  },
-];
-
+import { Tabs } from "./ui/tabs";
 export function Projects() {
+  const tabs = [
+    {
+      title: "Product",
+      value: "product",
+      content: (
+        <div className="w-full overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700 to-violet-900">
+          <p>Product Tab</p>
+          <DummyContent />
+        </div>
+      ),
+    },
+    {
+      title: "Services",
+      value: "services",
+      content: (
+        <div className="w-full overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700 to-violet-900">
+          <p>Services tab</p>
+          <DummyContent />
+        </div>
+      ),
+    },
+    {
+      title: "Playground",
+      value: "playground",
+      content: (
+        <div className="w-full overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700 to-violet-900">
+          <p>Playground tab</p>
+          <DummyContent />
+        </div>
+      ),
+    },
+    {
+      title: "Content",
+      value: "content",
+      content: (
+        <div className="w-full overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700 to-violet-900">
+          <p>Content tab</p>
+          <DummyContent />
+        </div>
+      ),
+    },
+    {
+      title: "Random",
+      value: "random",
+      content: (
+        <div className="w-full overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700 to-violet-900">
+          <p>Random tab</p>
+          <DummyContent />
+        </div>
+      ),
+    },
+  ];
+
   return (
-    <motion.section
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      className="py-20 w-full bg-white dark:bg-neutral-950"
-    >
-      <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-10">
-        <h2 className="text-3xl font-bold mb-8 text-center">My Projects</h2>
-        <Tabs
-          tabs={projects.map((project) => ({
-            title: project.title,
-            value: project.title,
-            content: (
-              <div className="p-8">
-                <div className="max-w-3xl mx-auto">
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    width={300}
-                    height={200}
-                    className="rounded-lg mb-4 w-full h-[300px] object-cover"
-                  />
-                  <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
-                  <p className="mb-4">{project.description}</p>
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-blue-500 hover:underline"
-                  >
-                    View Project
-                  </a>
-                </div>
-              </div>
-            ),
-          }))}
-        />
-      </div>
-    </motion.section>
+    <div id="projects" className="h-[20rem] md:h-[40rem] [perspective:1000px] relative b flex flex-col max-w-5xl mx-auto w-full  items-start justify-start my-40">
+      <Tabs tabs={tabs} />
+    </div>
   );
 }
 
+const DummyContent = () => {
+  return (
+    <Image
+      src="/linear.webp"
+      alt="dummy image"
+      width="1000"
+      height="1000"
+      className="object-cover object-left-top h-[60%]  md:h-[90%] absolute -bottom-10 inset-x-0 w-[90%] rounded-xl mx-auto"
+    />
+  );
+};
