@@ -7,7 +7,7 @@ import { Home, User, Briefcase, Mail, Download } from 'lucide-react';
 export function FloatingDock() {
   const navItems = [
     {
-      name: "Home",
+      name: "Homes",
       link: "#home",
       icon: <Home className="h-4 w-4" />,
     },
