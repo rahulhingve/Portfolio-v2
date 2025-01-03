@@ -28,7 +28,7 @@ const itemVariants = {
 
 export function Contact() {
   return (
-    <motion.section
+    <motion.section id="contact"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
