@@ -84,7 +84,7 @@ const timelineData = [
 
 export function TimelineSection() {
   return (
-    <div className="w-full">
+    <div id="about" className="w-full">
       <Timeline data={timelineData} />
     </div>
   );
