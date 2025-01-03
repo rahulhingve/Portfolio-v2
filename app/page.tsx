@@ -77,7 +77,7 @@ export default function Home() {
             className="relative min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100"
           >
             <div className="relative z-10">
-              <header className="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm py-4">
+              <header className=" top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm py-4">
                 <div className="container mx-auto px-4 flex justify-between items-center">
                   <motion.h1 
                     className="text-2xl font-bold"
@@ -91,18 +91,18 @@ export default function Home() {
                 </div>
               </header>
               <main>
-                <Homepage />
-                <TimelineSection />
+                <Homepage   />
+                <TimelineSection  />
                 <Projects />
                 <Contact />
               </main>
               <Footer />
             </div>
             <div className="fixed bottom-8 left-0 right-0 z-50 pointer-events-none">
-              <div className="max-w-7xl mx-auto px-4 pointer-events-auto">
+              <div className="  md:flex h-16 gap-4 items-end  rounded-2xl  dark: px-4 pb-3 pointer-events-auto">
                 <FloatingDock
                   items={navItems}
-                  desktopClassName="mx-auto"
+                  desktopClassName=""
                   mobileClassName="float-right"
                 />
               </div>
