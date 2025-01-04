@@ -36,7 +36,7 @@ export function Homepage() {
           className=" h-screen flex flex-col p-4 items-center justify-center"
         >
           <motion.h1 variants={itemVariants} className="text-4xl font-bold mb-4">
-            Still Working on this site, Please Visit the Old Portfolio Website.
+            Still Working on this site, Please Visit the Old Portfolio Website But still you can download my Resume.
           </motion.h1>
           <motion.div
           className="pb-8"
@@ -65,7 +65,7 @@ export function Homepage() {
             whileTap={{ scale: 0.95 }}
           >
             <a
-              href="/resume.pdf"
+              href="/RahulHingveResume.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-blue-500 text-white px-6 py-2 rounded-full inline-block transition-colors hover:bg-blue-600"
