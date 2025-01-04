@@ -90,7 +90,8 @@ export const FadeInDiv = ({
   hovering,
 }: {
   className?: string;
-  key?: any;
+  
+  key?:any ;
   tabs: Tab[];
   active: Tab;
   hovering?: boolean;
