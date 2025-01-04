@@ -66,11 +66,11 @@ export function Projects() {
 const DummyContent = () => {
   return (
     <Image
-      src="/linear.webp"
+      src="./placeholder.svg"
       alt="dummy image"
-      width="1000"
-      height="1000"
-      className="object-cover object-left-top h-[60%]  md:h-[90%] absolute -bottom-10 inset-x-0 w-[90%] rounded-xl mx-auto"
+      width="500"
+      height="500"
+      className="object-cover object-left-top   md:h-[90%] absolute md:-bottom-10 inset-x-3 md:inset-x-3 w-[50%] md:w-min rounded-xl ml-auto "
     />
   );
 };
