@@ -1,5 +1,5 @@
 import { motion } from "framer-motion"
-import { div } from "framer-motion/client";
+
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -39,7 +39,7 @@ export function Homepage() {
             Software Engineer, Techie & Open-Source Maintainer
           </motion.h1>
           <motion.p variants={itemVariants} className="text-xl mb-8">
-            I'm Rahul Hingve, a developer passionate about learning and building open-source software that is beneficial to developers and the world at large.
+            I&apos;m Rahul Hingve, a developer passionate about learning and building open-source software that is beneficial to developers and the world at large.
           </motion.p>
           <motion.div
             variants={itemVariants}
