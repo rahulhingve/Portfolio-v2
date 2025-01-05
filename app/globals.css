@@ -86,18 +86,10 @@ body {
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-border !scroll-smooth;
   }
   body {
     @apply bg-background text-foreground;
   }
 }
-.no-visible-scrollbar {
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  -webkit-overflow-scrolling: touch;
-}
 
-.no-visible-scrollbar::-webkit-scrollbar {
-  display: none;
-}
