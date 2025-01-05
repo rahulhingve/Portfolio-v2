@@ -5,72 +5,116 @@ import { Tabs } from "./ui/tabs";
 export function Projects() {
   const tabs = [
     {
-      title: "Product",
-      value: "product",
+      title: "MeetHub",
+      value: "meethub",
       content: (
         <div className="w-full overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700 to-violet-900">
-          <p>Product Tab</p>
-          <DummyContent />
+          <p>MeetHub</p>
+          <Image
+      src="/full1.webp"
+      alt="dummy image"
+      width="1000"
+      height="1000"
+      className="    md:h-[50%] absolute  inset-x-4 md:inset-x-4 w-[40%] md:w-[50%] rounded-xl ml-auto "
+    />
         </div>
       ),
     },
     {
-      title: "Services",
-      value: "services",
+      title: "SyncroCode",
+      value: "syncrocode",
       content: (
         <div className="w-full overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700 to-violet-900">
-          <p>Services tab</p>
-          <DummyContent />
+          <p>SyncroCode</p>
+          <Image
+      src="/full1.webp"
+      alt="dummy image"
+      width="500"
+      height="500"
+      className="md:h-[50%] absolute  inset-x-4 md:inset-x-4 w-[40%] md:w-[50%] rounded-xl ml-auto "
+    />
         </div>
       ),
     },
     {
-      title: "Playground",
-      value: "playground",
+      title: "Airdrop-SOL",
+      value: "airdropsol",
       content: (
         <div className="w-full overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700 to-violet-900">
-          <p>Playground tab</p>
-          <DummyContent />
+          <p>Airdrop-SOL</p>
+          <Image
+      src="/full1.webp"
+      alt="dummy image"
+      width="500"
+      height="500"
+      className="md:h-[50%] absolute  inset-x-4 md:inset-x-4 w-[40%] md:w-[50%] rounded-xl ml-auto "
+    />
         </div>
       ),
     },
     {
-      title: "Content",
-      value: "content",
+      title: "Web Crypto Wallet",
+      value: "webcryptowallet",
       content: (
         <div className="w-full overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700 to-violet-900">
-          <p>Content tab</p>
-          <DummyContent />
+          <p>Web Crypto Wallet</p>
+          <Image
+      src="/full1.webp"
+      alt="dummy image"
+      width="500"
+      height="500"
+      className="md:h-[50%] absolute  inset-x-4 md:inset-x-4 w-[40%] md:w-[50%] rounded-xl ml-auto"
+    />
         </div>
       ),
     },
     {
-      title: "Random",
-      value: "random",
+      title: "Medium Blog",
+      value: "mediumblog",
       content: (
         <div className="w-full overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700 to-violet-900">
-          <p>Random tab</p>
-          <DummyContent />
+          <p>Medium Blog</p>
+          <Image
+      src="/full1.webp"
+      alt="dummy image"
+      width="500"
+      height="500"
+      className="md:h-[50%] absolute  inset-x-4 md:inset-x-4 w-[40%] md:w-[50%] rounded-xl ml-auto"
+    />
         </div>
       ),
     },
   ];
 
   return (
-    <div id="projects" className="h-[20rem] md:h-[40rem] [perspective:1000px] relative b flex flex-col max-w-5xl mx-auto w-full  items-start justify-start my-40">
+    <div id="projects" className="h-[20rem] md:h-[40rem] [perspective:1000px]  b flex flex-col max-w-5xl mx-auto w-full   justify-start my-40">
+      <h2  className="text-3xl font-bold mb-8 text-center items-center">
+        Projects
+      </h2>
       <Tabs tabs={tabs} />
     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   );
 }
 
-const DummyContent = () => {
-  return (
-    <Image
-      src="./placeholder.svg"
-      alt="dummy image"
-      width="500"
-      height="500"
-      className="object-cover object-left-top   md:h-[90%] absolute md:-bottom-10 inset-x-3 md:inset-x-3 w-[50%] md:w-min rounded-xl ml-auto "
-    />
-  );
-};
+
