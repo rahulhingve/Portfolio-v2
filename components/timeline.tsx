@@ -117,7 +117,7 @@ const timelineData = [
     content: (
       <div>
         <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-4">
-          Technocrats institue of technology and Scince Bhopal 
+          Technocrats Institue of Technology and Science Bhopal 
         </p>
         <div className="mb-8">
           <div className="flex gap-2 items-center text-neutral-700 dark:text-neutral-300 text-xs md:text-sm pb-2">
