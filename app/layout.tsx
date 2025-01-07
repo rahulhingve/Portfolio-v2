@@ -16,8 +16,10 @@ export default function RootLayout({
 }) {
   return (
     <html className='!scroll-smooth' lang="en" suppressHydrationWarning>
-      
+            
+
       <body className={inter.className}>
+      
       <ReactLenis root >
         <ThemeProvider
           attribute="class"
@@ -25,6 +27,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+         
           {children}
         </ThemeProvider>
               </ReactLenis>
