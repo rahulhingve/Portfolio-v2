@@ -54,6 +54,18 @@ export default function Home() {
     return () => clearTimeout(timer)
   }, [])
 
+
+  const Noise = () => {
+    return (
+      <div
+        className="absolute  w-full h-full   opacity-10 [mask-image:radial-gradient(#fff,transparent,75%)] "
+        style={{
+          backgroundImage: "url(/noise.webp)",
+          backgroundSize: "30%",
+        }}
+      ></div>
+    );
+  };
   return (
     <>
       <AnimatePresence mode="wait">
@@ -76,6 +88,7 @@ export default function Home() {
             transition={{ duration: 0.5 }}
             className="relative min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100"
           >
+            <Noise/>
             <div className="relative z-10">
               <header className=" top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm py-4">
                 <div className="container mx-auto px-4 flex justify-between items-center">
