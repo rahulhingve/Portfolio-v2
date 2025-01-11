@@ -23,10 +23,10 @@ const itemVariants = {
   }
 };
 
-export function Homepage() {
+export function Homepage({id}:any) {
   return (
     <>
-      <div id="home">
+      <div id={id} >
 
 
         <motion.section
