@@ -68,6 +68,7 @@ export default function Home() {
   };
   return (
     <>
+    
       <AnimatePresence mode="wait">
         {isLoading ? (
           <motion.div
@@ -86,11 +87,11 @@ export default function Home() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
-            className="relative min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100"
+            className="relative min-h-screen bg-slate-500 dark:bg-gray-900 text-gray-900 dark:text-gray-100"
           >
             <Noise/>
             <div className="relative z-10">
-              <header className=" top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm py-4">
+              <header className="    py-4">
                 <div className="container mx-auto px-4 flex justify-between items-center">
                   <motion.h1 
                     className="text-2xl font-bold"
@@ -104,10 +105,10 @@ export default function Home() {
                 </div>
               </header>
               <main>
-                <Homepage   />
-                <TimelineSection  />
-                <Projects />
-                <Contact />
+                <Homepage   id="home" />
+                <TimelineSection id="about" />
+                <Projects id="projects"/>
+                <Contact id="contact" />
               </main>
               <Footer />
             </div>
