@@ -5,7 +5,7 @@ import { Tabs } from "./ui/tabs";
 import { LinkPreview } from "@/components/ui/link-preview";
 
 
-export function Projects() {
+export function Projects({id}:any) {
   const tabs = [
     {
       title: "MeetHub",
@@ -298,7 +298,7 @@ Medium Blog
   ];
 
   return (
-    <div id="projects" className="h-[30rem] md:h-[40rem] [perspective:1000px]  b flex flex-col max-w-5xl mx-auto w-full   justify-start mb-40 mt-10">
+    <div id={id}  className="h-[30rem] md:h-[40rem] [perspective:1000px]  b flex flex-col max-w-5xl mx-auto w-full   justify-start mb-40 mt-10">
       <h2 className="text-3xl font-bold mb-8 text-center items-center">
         Projects
       </h2>
