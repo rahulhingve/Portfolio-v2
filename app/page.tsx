@@ -17,6 +17,7 @@ import {
   IconMail,
   IconDownload,
 } from "@tabler/icons-react"
+import Link from "next/link"
 
 const navItems = [
   {
@@ -99,7 +100,8 @@ export default function Home() {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.2 }}
                   >
-                    Rahul Hingve
+                  <Link href="https://rahulhingve.vercel.app/">  Rahul Hingve</Link>
+                    
                   </motion.h1>
                   <ThemeSwitcher />
                 </div>
