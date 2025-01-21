@@ -191,7 +191,7 @@ export function Projects({id}:any) {
 
             <div>
               <div className="max-w-[60%] sm:max-w-[50%]  text-lg md:text-3xl mt-4 md:mt-32" >{"Web Based "}<LinkPreview
-                url="https://meetshub.vercel.app"
+                url="https://wallx-one.vercel.app"
                 imageSrc="/WebCryptoWallet.webp"
                 isStatic
                 className="font-bold"
@@ -223,7 +223,7 @@ export function Projects({id}:any) {
             />
             <div className="mt-4 md:mt-8">
               <div className="text-sm  md:text-xl"><LinkPreview
-                url="https://meetshub.vercel.app"
+                url="https://wallx-one.vercel.app"
                 imageSrc="/WebCryptoWallet.webp"
                 isStatic
                 className="font-bold"
@@ -249,7 +249,7 @@ export function Projects({id}:any) {
             <div>
               <div className="max-w-[60%] sm:max-w-[50%]  text-lg md:text-3xl mt-4 md:mt-32" >{"Share your Blogs at "} <LinkPreview
 
-                url="https://meetshub.vercel.app"
+                url="https://medium-blog-clone-taupe.vercel.app/signin"
                 imageSrc="/MediumBlog.webp"
                 isStatic
                 className="font-bold"
@@ -281,7 +281,7 @@ export function Projects({id}:any) {
             <div className="mt-4 md:mt-8">
               <div className="text-sm  md:text-xl"><LinkPreview
 
-url="https://meetshub.vercel.app"
+url="https://medium-blog-clone-taupe.vercel.app/signin"
 imageSrc="/MediumBlog.webp"
 isStatic
 className="font-bold"
