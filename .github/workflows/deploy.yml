@@ -1,4 +1,4 @@
-name: Deploy to Digital Ocean
+name: Checkout Build
 
 on:
   push:
@@ -28,7 +28,7 @@ jobs:
       - name: Build application
         run: pnpm build
 
-      - name: Deploy to Digital Ocean
+      - name: Deploy to DO server
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.DO_HOST }}
