@@ -15,25 +15,17 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html className='!scroll-smooth' lang="en" suppressHydrationWarning>
-            
-
-      <body  className={inter.className}>
-      
-      
+    <html className="dark" lang="en" suppressHydrationWarning>
+      <body className={`${inter.className} dark:bg-gray-900`}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="dark"
-          enableSystem
+          forcedTheme="dark"
+          enableSystem={false}
           disableTransitionOnChange
         >
-         
           {children}
         </ThemeProvider>
-              
       </body>
-
-
     </html>
   )
 }
