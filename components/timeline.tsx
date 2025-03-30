@@ -7,7 +7,7 @@ const timelineItems = [
   {
     type: "education",
     title: "Bachelor of Technology in Computer Science and Engineering",
-    institution: "Technological Institute of Technology and Science Bhopal",
+    institution: "Technocrats Institute of Technology and Science Bhopal",
     period: "2019 - 2023",
     description: "Graduated with a strong foundation in computer science and software development.",
     icon: IconSchool,
