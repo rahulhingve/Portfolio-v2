@@ -48,8 +48,9 @@ jobs:
             # Pull latest changes
             git pull origin main
             
-            # Stop the PM2 process
+            # Stop and delete the PM2 process
             pm2 stop portfolio || true
+            pm2 delete portfolio || true
             
             # Clean build directory
             rm -rf .next
@@ -58,8 +59,8 @@ jobs:
             pnpm install
             pnpm build
             
-            # Start the application with PM2
-            pm2 start ecosystem.config.js || pm2 restart portfolio
+            # Start the application with new PM2 config
+            pm2 start ecosystem.config.js
             
             # Save PM2 process list
             pm2 save 
