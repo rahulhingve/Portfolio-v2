@@ -3,7 +3,7 @@ name: Deploy to Digital Ocean
 on:
   push:
     branches:
-      - main # or your default branch name
+      - main 
 
 jobs:
   deploy:
@@ -35,10 +35,31 @@ jobs:
           username: ${{ secrets.DO_USERNAME }}
           key: ${{ secrets.DO_SSH_KEY }}
           script: |
+            # Source NVM
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+            
+            # Set PATH to include Node.js binaries
+            export PATH="/root/.nvm/versions/node/v22.14.0/bin:$PATH"
+            
+            # Navigate to project directory
             cd Portfolio-v2
+            
+            # Pull latest changes
             git pull origin main
-            pm2 stop portfolio
+            
+            # Stop the PM2 process
+            pm2 stop portfolio || true
+            
+            # Clean build directory
             rm -rf .next
+            
+            # Install dependencies and build
             pnpm install
             pnpm build
-            pm2 start portfolio 
+            
+            # Start the application with PM2
+            pm2 start ecosystem.config.js || pm2 restart portfolio
+            
+            # Save PM2 process list
+            pm2 save 
