@@ -3,24 +3,22 @@ import React, { useRef } from "react";
 import { useMotionValueEvent, useScroll } from "framer-motion";
 import { motion } from "framer-motion";
 
-export const StickyScroll = ({
-  content,
-}: {
-  content: {
-    title: string;
-    description: string;
-  }[];
-}) => {
+interface StickyScrollRevealProps {
+  children: React.ReactNode;
+  className?: string;
+}
+
+export function StickyScrollReveal({ children, className }: StickyScrollRevealProps) {
   const [activeCard, setActiveCard] = React.useState(0);
   const ref = useRef<any>(null);
   const { scrollYProgress } = useScroll({
     container: ref,
     offset: ["start start", "end start"],
   });
-  const cardLength = content.length;
+  const cardLength = React.Children.count(children);
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    const cardsBreakpoints = content.map((_, index) => index / cardLength);
+    const cardsBreakpoints = Array.from({ length: cardLength }, (_, index) => index / cardLength);
     const closestBreakpointIndex = cardsBreakpoints.reduce(
       (acc, breakpoint, index) => {
         const distance = Math.abs(latest - breakpoint);
@@ -43,13 +41,13 @@ export const StickyScroll = ({
 
   return (
     <motion.div
-      className="h-[30rem] overflow-y-auto flex justify-center relative space-x-10 rounded-md p-10"
+      className={`h-[30rem] overflow-y-auto flex justify-center relative space-x-10 rounded-md p-10 ${className || ''}`}
       ref={ref}
     >
       <div className="div relative flex items-start px-4">
         <div className="max-w-2xl">
-          {content.map((item, index) => (
-            <div key={item.title + index} className="my-20">
+          {React.Children.map(children, (child, index) => (
+            <div key={index} className="my-20">
               <motion.h2
                 initial={{
                   opacity: 0,
@@ -59,19 +57,8 @@ export const StickyScroll = ({
                 }}
                 className="text-2xl font-bold text-slate-100"
               >
-                {item.title}
+                {child}
               </motion.h2>
-              <motion.p
-                initial={{
-                  opacity: 0,
-                }}
-                animate={{
-                  opacity: activeCard === index ? 1 : 0.3,
-                }}
-                className="text-kg text-slate-300 max-w-sm mt-10"
-              >
-                {item.description}
-              </motion.p>
             </div>
           ))}
           <div className="h-40" />
@@ -85,5 +72,5 @@ export const StickyScroll = ({
       ></motion.div>
     </motion.div>
   );
-};
+}
 

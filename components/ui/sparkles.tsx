@@ -18,6 +18,20 @@ type ParticlesProps = {
   particleColor?: string;
   particleDensity?: number;
 };
+
+interface SparkleProps {
+  children: React.ReactNode;
+  className?: string;
+}
+
+// interface SparkleInstance {
+//   id: string;
+//   createdAt: number;
+//   color: string;
+//   size: number;
+//   style: React.CSSProperties;
+// }
+
 export const SparklesCore = (props: ParticlesProps) => {
   const {
     id,
@@ -432,4 +446,12 @@ export const SparklesCore = (props: ParticlesProps) => {
     </motion.div>
   );
 };
+
+export function Sparkles({ children, className }: SparkleProps) {
+  return (
+    <div className={className}>
+      {children}
+    </div>
+  );
+}
 

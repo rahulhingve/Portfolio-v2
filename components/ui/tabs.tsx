@@ -3,11 +3,19 @@ import React from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
-type Tab = {
+interface Tab {
   title: string;
   value: string;
-  content?: React.ReactNode;
-};
+  content: React.ReactNode;
+}
+
+interface TabsProps {
+  tabs: Tab[];
+  containerClassName?: string;
+  activeTabClassName?: string;
+  tabClassName?: string;
+  contentClassName?: string;
+}
 
 export const Tabs = ({
   tabs: propTabs,
@@ -15,18 +23,12 @@ export const Tabs = ({
   activeTabClassName,
   tabClassName,
   contentClassName,
-}: {
-  tabs: Tab[];
-  containerClassName?: string;
-  activeTabClassName?: string;
-  tabClassName?: string;
-  contentClassName?: string;
-}) => {
+}: TabsProps) => {
   const [active, setActive] = React.useState<Tab>(propTabs[0]);
   const [tabs, setTabs] = React.useState<Tab[]>(propTabs);
 
   const moveSelectedTabToTop = (idx: number) => {
-    const newTabs = [...propTabs];
+    const newTabs = [...tabs];
     const selectedTab = newTabs.splice(idx, 1);
     newTabs.unshift(selectedTab[0]);
     setTabs(newTabs);
@@ -43,7 +45,7 @@ export const Tabs = ({
           containerClassName
         )}
       >
-        {propTabs.map((tab, idx) => (
+        {tabs.map((tab, idx) => (
           <button
             key={tab.title}
             onClick={() => {

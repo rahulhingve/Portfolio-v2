@@ -1,174 +1,116 @@
 "use client";
 
-import { Timeline } from "./ui/timeline";
-import Image from "next/image";
+import { motion } from "framer-motion";
+import { IconSchool, IconBriefcase } from "@tabler/icons-react";
 
-const timelineData = [
+const timelineItems = [
   {
-    title: "Current - Aug 2024",
-    content: (
-      <div>
-        <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-8">
-          Started Learning About Web3 And similar tech  
-        </p>
-        
-        <div className="grid grid-cols-2 gap-4">
-          <Image
-            src="/web3.webp?height=500&width=500"
-            alt="Project 1"
-            priority
-            width={500}
-            height={500}
-            className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
-          />
-          <Image
-            src="/web31.webp?height=500&width=500"
-            alt="Project 2"
-            priority
-            width={500}
-            height={500}
-            className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
-          />
-        </div>
-      </div>
-    ),
+    type: "education",
+    title: "Bachelor of Technology in Computer Science and Engineering",
+    institution: "Technological Institute of Technology and Science Bhopal",
+    period: "2019 - 2023",
+    description: "Graduated with a strong foundation in computer science and software development.",
+    icon: IconSchool,
   },
   {
-    title: "June 2024 - Jan 2024",
-    content: (
-      <div>
-        <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-8">
-          Started Learning Full Stack Development as full time   
-        </p>
-        
-        <div className="grid grid-cols-2 gap-4">
-          <Image
-            src="/full1.webp?height=500&width=500"
-            alt="Project 1"
-            priority
-            width={500}
-            height={500}
-            className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
-          />
-          <Image
-            src="/full3.webp?height=500&width=500"
-            alt="Project 2"
-            priority
-            width={500}
-            height={500}
-            className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
-          />
-        </div>
-      </div>
-    ),
-  },{
-    title: "Jan 2024 - Oct 2023",
-    content: (
-      <div>
-        <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-8">
-          Frontend Developer intern  
-        </p>
-        <div className="flex gap-2 items-center text-neutral-700 dark:text-neutral-300 text-xs md:text-sm pb-2">
-           Mdp Infra Pvt Ltd Bhopal 
-          </div>
-        <div className="grid grid-cols-2 gap-4">
-          <Image
-            src="/fe.webp?height=500&width=500"
-            alt="Project 1"
-            priority
-            width={500}
-            height={500}
-            className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
-          />
-          <Image
-            src="/Fe2.webp?height=500&width=500"
-            alt="Project 2"
-            priority
-            width={500}
-            height={500}
-            className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
-          />
-        </div>
-      </div>
-    ),
+    type: "experience",
+    title: "Frontend Developer Intern",
+    institution: "Mdp Infra Pvt Ltd Bhopal", 
+    period: "Oct 2023 - Jan 2024",
+    description: "Redesigned and optimized MDP-attendance system with responsive design using CSS and Bootstrap. Developed interactive data visualizations including pie charts for attendance analytics. Collaborated with teams to integrate frontend improvements.",
+    icon: IconBriefcase,
   },
   {
-    title: "2023",
-    content: (
-      <div>
-        <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-8">
-          Graduated
-        </p>
-        <div className="grid grid-cols-2 gap-4">
-          <Image
-            src="/tit4.webp?height=500&width=500"
-            alt="Open Source 1"
-            priority
-            width={500}
-            height={500}
-            className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
-          />
-          <Image
-            src="/tit3.webp?height=500&width=500"
-            alt="Open Source 2"
-            priority
-            width={500}
-            height={500}
-            className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
-          />
-        </div>
-      </div>
-    ),
-  },
-  {
-    title: "2019",
-    content: (
-      <div>
-        <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-4">
-          Technocrats Institue of Technology and Science Bhopal 
-        </p>
-        <div className="mb-8">
-          <div className="flex gap-2 items-center text-neutral-700 dark:text-neutral-300 text-xs md:text-sm pb-2">
-            ✅ Computer Science  Engineering 
-          </div>
-          <div className="grid grid-cols-2 gap-4">
-          <Image
-            src="/tit2.webp?height=500&width=500"
-            alt="Open Source 1"
-            priority
-            width={500}
-            height={500}
-            className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
-          />
-          <Image
-            src="/tit1.webp?height=500&width=500"
-            alt="Open Source 2"
-            priority
-            width={500}
-            height={500}
-            className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
-          />
-        </div>
-          {/* <div className="flex gap-2 items-center text-neutral-700 dark:text-neutral-300 text-xs md:text-sm">
-            ✅ Contributed to core framework improvements
-          </div>
-          <div className="flex gap-2 items-center text-neutral-700 dark:text-neutral-300 text-xs md:text-sm">
-            ✅ Mentored junior developers
-          </div>
-          <div className="flex gap-2 items-center text-neutral-700 dark:text-neutral-300 text-xs md:text-sm">
-            ✅ Spoke at tech conferences
-          </div> */}
-        </div>
-      </div>
-    ),
+    type: "experience",
+    title: "Full Stack Development & Web3 Journey",
+    institution: "Self-Taught Learning",
+    period: "2024 - Present",
+    description: "Embarked on full stack development journey, building projects with modern web technologies. Gained hands-on experience in Web3 development and blockchain technologies. Currently expanding knowledge into DevOps practices while continuing to deepen Web3 expertise.",
+    icon: IconBriefcase,
   },
 ];
 
-export function TimelineSection( {id}:any) {
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2
+    }
+  }
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, x: -20 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      type: "spring",
+      stiffness: 100
+    }
+  }
+};
+
+export function Timeline({ id }: { id: string }) {
   return (
-    <div  className="w-full" id={id}>
-      <Timeline data={timelineData} />
-    </div>
+    <section id={id} className="section-padding">
+      <div className="container">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <h2 className="heading">Experience & Education</h2>
+          <p className="subheading">
+            My journey through education and professional experience that has shaped my expertise.
+          </p>
+        </motion.div>
+
+        <div className="max-w-3xl mx-auto">
+          <div className="relative">
+            {/* Timeline line */}
+            <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gray-200 dark:bg-gray-700" />
+
+            {timelineItems.map((item, index) => (
+              <motion.div
+                key={index}
+                variants={itemVariants}
+                className="relative pl-16 pb-12 last:pb-0"
+              >
+                {/* Timeline dot */}
+                <div className="absolute left-6 w-4 h-4 rounded-full bg-primary-500" />
+                
+                {/* Timeline icon */}
+                <div className="absolute left-0 w-8 h-8 rounded-full bg-white dark:bg-gray-800 border-2 border-primary-500 flex items-center justify-center">
+                  <item.icon className="w-4 h-4 text-primary-500" />
+                </div>
+
+                {/* Timeline content */}
+                <div className="card">
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
+                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+                      {item.title}
+                    </h3>
+                    <span className="text-sm text-gray-500 dark:text-gray-400">
+                      {item.period}
+                    </span>
+                  </div>
+                  <p className="text-gray-600 dark:text-gray-300 mb-2">
+                    {item.institution}
+                  </p>
+                  <p className="text-gray-500 dark:text-gray-400">
+                    {item.description}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
 

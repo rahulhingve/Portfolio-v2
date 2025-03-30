@@ -11,8 +11,7 @@ import {
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
-
-type LinkPreviewProps = {
+interface LinkPreviewProps {
   children: React.ReactNode;
   url?: string;
   className?: string;
@@ -20,11 +19,9 @@ type LinkPreviewProps = {
   height?: number;
   quality?: number;
   layout?: string;
-
-} & (
-    | { isStatic: true; imageSrc: string }
-    | { isStatic?: false; imageSrc?: never }
-  );
+  isStatic?: boolean;
+  imageSrc?: string;
+}
 
 export const LinkPreview = ({
   url,
@@ -36,7 +33,6 @@ export const LinkPreview = ({
   layout = "fixed",
   isStatic = false,
   imageSrc = "",
-
 }: LinkPreviewProps) => {
   const src = imageSrc;
   // if (!isStatic) {
@@ -160,4 +156,4 @@ export const LinkPreview = ({
       </HoverCardPrimitive.Root>
     </>
   );
-};
+}

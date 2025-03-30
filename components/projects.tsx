@@ -1,330 +1,115 @@
 "use client";
 
 import Image from "next/image";
-import { Tabs } from "./ui/tabs";
-import { LinkPreview } from "@/components/ui/link-preview";
+import { IconBrandGithub, IconExternalLink } from "@tabler/icons-react";
 
+const projects = [
+  {
+    title: "MeetHub",
+    description: "A real-time meeting application that enables seamless video conferencing and collaboration.",
+    image: "/MeetHub.webp",
+    technologies: ["React", "WebRTC", "Node.js", "Socket.io"],
+    githubUrl: "https://github.com/rahulhingve/rtma",
+    liveUrl: "https://meetshub.vercel.app",
+  },
+  {
+    title: "SyncroCode",
+    description: "A collaborative code editor platform for real-time coding and project management.",
+    image: "/SyncroCode.webp",
+    technologies: ["React", "Node.js", "Socket.io"],
+    githubUrl: "https://github.com/rahulhingve/rtctd",
+    liveUrl: "https://syncrocode.vercel.app",
+  },
+  {
+    title: "Airdrop-SOL",
+    description: "A web-based application for managing cryptocurrency wallets and airdrops.",
+    image: "/AirdropSOL.webp",
+    technologies: ["React", "Web3.js", "Solana"],
+    githubUrl: "https://github.com/rahulhingve/Airdrop-Sol",
+    liveUrl: "https://sol-dapp-zeta.vercel.app",
+  },
+  {
+    title: "Web Crypto Wallet",
+    description: "A secure cryptocurrency wallet management platform supporting multiple chains.",
+    image: "/WebCryptoWallet.webp",
+    technologies: ["React", "Web3.js", "Node.js"],
+    githubUrl: "https://github.com/rahulhingve/web-crypto-wallet",
+    liveUrl: "https://wallx-one.vercel.app",
+  },
+];
 
-export function Projects({id}:any) {
-  const tabs = [
-    {
-      title: "MeetHub",
-      value: "meethub",
-      content: (
-        <div className="md:w-full overflow-hidden relative md:h-full rounded-2xl p-10 text-xl md:text-4xl  text-white bg-gradient-to-br from-purple-700 to-violet-900">
-          <p>MeetHub</p>
-          <div className="flex flex-col">
-
-            <div className="max-w-[60%] sm:max-w-[50%]  text-lg md:text-3xl mt-4 md:mt-32">
-
-              <LinkPreview
-                url="https://meetshub.vercel.app"
-                imageSrc="/MeetHub.webp"
-                isStatic
-                className="font-bold"
-              >
-                MeetHub
-              </LinkPreview>
-              {" is an Online Real time Meeting Application"}
-              <LinkPreview
-                url="https://github.com/rahulhingve/rtma"
-                imageSrc="/gitMeetHub.webp"
-                isStatic
-                className="font-bold"
-              >
-                <Image
-                  src="/github-mark.svg"
-                  alt="github logo"
-                  width="50"
-                  height="50"
-                  className="flex md:w-[10%] mx-auto"
-                /></LinkPreview>
-            </div>
-
-
-
-            <Image
-              src="/MeetHub.webp"
-              alt="dummy image"
-              width="1000"
-              height="1000"
-              className="    md:h-[50%] absolute  inset-x-4 md:inset-x-4 w-[40%] md:w-[50%] rounded-xl ml-auto "
-            />
-
-            <div className="mt-4 md:mt-8">
-              <div className="text-sm  md:text-xl">
-
-                <LinkPreview
-
-                  url="https://meetshub.vercel.app"
-                  imageSrc="/MeetHub.webp"
-                  isStatic
-                  className="font-bold"
-                >
-                  MeetHub
-                </LinkPreview>{" is a cutting-edge online real-time meeting application designed to enhance communication and collaboration for users across various sectors. With its intuitive interface, MeetHub allows users to create and join virtual meeting rooms effortlessly, making it ideal for both personal and professional use."}
-              </div>
-
-            </div>
-          </div>
-        </div>
-
-      ),
-    },
-    {
-      title: "SyncroCode",
-      value: "syncrocode",
-      content: (
-        <div className="md:w-full overflow-hidden relative md:h-full rounded-2xl p-10 text-xl md:text-4xl  text-white bg-gradient-to-br from-purple-700 to-violet-900">
-          <p>SyncroCode</p>
-          <div className="flex flex-col">
-
-            <div className="max-w-[60%] sm:max-w-[50%]  text-lg md:text-3xl mt-4 md:mt-32">
-              {"Real Time Code with "}<LinkPreview
-                url="https://syncrocode.vercel.app"
-                imageSrc="/SyncroCode.webp"
-                isStatic
-                className="font-bold"
-              >
-                SyncroCode
-              </LinkPreview>
-              <LinkPreview
-                url="https://github.com/rahulhingve/rtctd"
-                imageSrc="/gitMeetHub.webp"
-                isStatic
-                className="font-bold"
-              >
-                <Image
-                  src="/github-mark.svg"
-                  alt="github logo"
-                  width="50"
-                  height="50"
-                  className="flex md:w-[10%] mx-auto"
-                /></LinkPreview>
-            </div>
-
-
-
-            <Image
-              src="/SyncroCode.webp"
-              alt="dummy image"
-              width="500"
-              height="500"
-              className="md:h-[50%] absolute  inset-x-4 md:inset-x-4 w-[40%] md:w-[50%] rounded-xl ml-auto "
-            />
-            <div className="mt-4 md:mt-8">
-              <div className="text-sm  md:text-xl"><LinkPreview
-                url="https://syncrocode.vercel.app"
-                imageSrc="/SyncroCode.webp"
-                isStatic
-                className="font-bold"
-              >
-                SyncroCode
-              </LinkPreview>{" is an advanced collaboration platform tailored for developers, enabling real-time coding and project management. This powerful tool streamlines the development workflow by allowing multiple users to work concurrently on code, enhancing teamwork and productivity."}</div>
-            </div>
-          </div>
-        </div>
-      ),
-    },
-    {
-      title: "Airdrop-SOL",
-      value: "airdropsol",
-      content: (
-        <div className="md:w-full overflow-hidden relative md:h-full rounded-2xl p-10 text-xl md:text-4xl  text-white bg-gradient-to-br from-purple-700 to-violet-900">
-          <p>Airdrop-SOL</p>
-          <div className="flex flex-col">
-
-            <div className="max-w-[60%] sm:max-w-[50%]  text-lg md:text-3xl mt-4 md:mt-32">
-              {"Solana Airdrop & Send with "}<LinkPreview
-                url="https://sol-dapp-zeta.vercel.app"
-                imageSrc="/AirdropSOL.webp"
-                isStatic
-                className="font-bold"
-              >
-                Airdrop SOL
-              </LinkPreview>
-              <LinkPreview
-                url="https://github.com/rahulhingve/Airdrop-Sol"
-                imageSrc="/gitMeetHub.webp"
-                isStatic
-                className="font-bold"
-              >
-                <Image
-                  src="/github-mark.svg"
-                  alt="github logo"
-                  width="50"
-                  height="50"
-                  className="flex md:w-[10%] mx-auto"
-                /></LinkPreview>
-
-            </div>
-            <Image
-              src="/AirdropSOL.webp"
-              alt="dummy image"
-              width="500"
-              height="500"
-              className="md:h-[50%] absolute  inset-x-4 md:inset-x-4 w-[40%] md:w-[50%] rounded-xl ml-auto "
-            />
-            <div className="mt-4 md:mt-8">
-              <div className="text-sm  md:text-xl"><LinkPreview
-                url="https://sol-dapp-zeta.vercel.app"
-                imageSrc="/AirdropSOL.webp"
-                isStatic
-                className="font-bold"
-              >
-                Airdrop SOL
-              </LinkPreview>{" is an innovative website designed to facilitate the distribution of Solana (SOL) tokens through airdrops and free faucets. This platform empowers users, developers, and projects to easily send SOL to multiple wallet addresses, enhancing community engagement and participation in the Solana ecosystem."}
-
-              </div>
-            </div>
-          </div>
-        </div>
-      ),
-    },
-    {
-      title: "Web Crypto Wallet",
-      value: "webcryptowallet",
-      content: (
-        <div className="md:w-full overflow-hidden relative md:h-full rounded-2xl p-10 text-xl md:text-4xl  text-white bg-gradient-to-br from-purple-700 to-violet-900">
-          <p>Web Crypto Wallet</p>
-          <div className="flex flex-col">
-
-            <div>
-              <div className="max-w-[60%] sm:max-w-[50%]  text-lg md:text-3xl mt-4 md:mt-32" >{"Web Based "}<LinkPreview
-                url="https://wallx-one.vercel.app"
-                imageSrc="/WebCryptoWallet.webp"
-                isStatic
-                className="font-bold"
-              >
-                Crypto Wallet Creator
-
-              </LinkPreview>
-                <LinkPreview
-                  url="https://github.com/rahulhingve/web-crypto-wallet"
-                  imageSrc="/gitMeetHub.webp"
-                  isStatic
-                  className="font-bold"
-                >
-                  <Image
-                    src="/github-mark.svg"
-                    alt="github logo"
-                    width="50"
-                    height="50"
-                    className="flex md:w-[10%] mx-auto"
-                  /></LinkPreview>
-              </div>
-            </div>
-            <Image
-              src="/WebCryptoWallet.webp"
-              alt="dummy image"
-              width="500"
-              height="500"
-              className="md:h-[50%] absolute  inset-x-4 md:inset-x-4 w-[40%] md:w-[50%] rounded-xl ml-auto"
-            />
-            <div className="mt-4 md:mt-8">
-              <div className="text-sm  md:text-xl"><LinkPreview
-                url="https://wallx-one.vercel.app"
-                imageSrc="/WebCryptoWallet.webp"
-                isStatic
-                className="font-bold"
-              >
-                Crypto Wallet Creator
-
-              </LinkPreview>{" is a simple, web-based application designed to empower users to create and manage wallets for Bitcoin, Ethereum, and Solana. This platform aims to provide a secure and user-friendly experience for both beginners and experienced cryptocurrency enthusiasts."}
-
-              </div>
-            </div>
-          </div>
-        </div>
-      ),
-    },
-    {
-      title: "Medium Blog",
-      value: "mediumblog",
-      content: (
-        <div className="md:w-full overflow-hidden relative md:h-full rounded-2xl p-10 text-xl md:text-4xl  text-white bg-gradient-to-br from-purple-700 to-violet-900">
-          <p>Medium Blog</p>
-          <div className="flex flex-col">
-
-            <div>
-              <div className="max-w-[60%] sm:max-w-[50%]  text-lg md:text-3xl mt-4 md:mt-32" >{"Share your Blogs at "} <LinkPreview
-
-                url="https://medium-blog-clone-taupe.vercel.app/signin"
-                imageSrc="/MediumBlog.webp"
-                isStatic
-                className="font-bold"
-              >
-                Medium Blog
-              </LinkPreview> {" by Rahul"}
-              <LinkPreview
-                url="https://github.com/rahulhingve/medium-blog-clone"
-                imageSrc="/gitMeetHub.webp"
-                isStatic
-                className="font-bold"
-              >
-                <Image
-                  src="/github-mark.svg"
-                  alt="github logo"
-                  width="50"
-                  height="50"
-                  className="flex md:w-[10%] mx-auto"
-                /></LinkPreview>
-              </div>
-            </div>
-            <Image
-              src="/MediumBlog.webp"
-              alt="dummy image"
-              width="500"
-              height="500"
-              className="md:h-[50%] absolute  inset-x-4 md:inset-x-4 w-[40%] md:w-[50%] rounded-xl ml-auto"
-            />
-            <div className="mt-4 md:mt-8">
-              <div className="text-sm  md:text-xl"><LinkPreview
-
-url="https://medium-blog-clone-taupe.vercel.app/signin"
-imageSrc="/MediumBlog.webp"
-isStatic
-className="font-bold"
->
-Medium Blog
-</LinkPreview>{" is a straightforward blogging platform designed for users to share their thoughts, stories, and expertise with a global audience. This user-friendly website empowers writers of all levels to create and publish content effortlessly, fostering a vibrant community of readers and contributors."}
-
-              </div>
-            </div>
-          </div>
-        </div>
-      ),
-    },
-  ];
-
+export function Projects({ id }: { id: string }) {
   return (
-    <div id={id}  className="h-[30rem] md:h-[40rem] [perspective:1000px]  b flex flex-col max-w-5xl mx-auto w-full   justify-start mb-40 mt-10">
-      <h2 className="text-3xl font-bold mb-8 text-center items-center">
-        Projects
-      </h2>
-      <Tabs tabs={tabs} />
-    </div>
+    <section id={id} className="section-padding bg-gray-50 dark:bg-gray-900">
+      <div className="container">
+        <div className="text-center mb-16">
+          <h2 className="heading text-gray-900 dark:text-white">Featured Projects</h2>
+          <p className="subheading text-gray-600 dark:text-gray-300">
+            A collection of my recent work showcasing my expertise in web development, blockchain, and real-time applications.
+          </p>
+        </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {projects.map((project) => (
+            <div
+              key={project.title}
+              className="bg-white dark:bg-gray-900 rounded-xl shadow-lg hover:scale-105 transition-transform duration-300"
+            >
+              <div className="relative aspect-video overflow-hidden rounded-t-lg group">
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  className="object-cover transition-transform duration-300 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </div>
+              
+              <div className="p-6">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                  {project.title}
+                </h3>
+                <p className="text-gray-600 dark:text-gray-300 mb-4">
+                  {project.description}
+                </p>
+                
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {project.technologies.map((tech) => (
+                    <span
+                      key={tech}
+                      className="px-2 py-1 text-xs font-medium bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+                
+                <div className="flex gap-4">
+                  <a
+                    href={project.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="button button-secondary bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700"
+                  >
+                    <IconBrandGithub className="w-5 h-5 mr-2" />
+                    GitHub
+                  </a>
+                  <a
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="button button-primary bg-blue-600 dark:bg-blue-500 text-white hover:bg-blue-700 dark:hover:bg-blue-600"
+                  >
+                    <IconExternalLink className="w-5 h-5 mr-2" />
+                    Live Demo
+                  </a>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }
 
