@@ -21,10 +21,11 @@ export const metadata: Metadata = {
     siteName: "Rahul Hingve Portfolio",
     images: [
       {
-        url: "/og-image.jpg",
+        url: "https://rahulhingve.pro/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "Rahul Hingve Portfolio",
+        type: "image/jpeg",
       },
     ],
   },
@@ -33,7 +34,7 @@ export const metadata: Metadata = {
     title: "Rahul Hingve | Full Stack Developer | Blockchain Developer",
     description: "Portfolio of Rahul Hingve (rahul hingve) - A passionate full-stack developer specializing in web development and blockchain applications.",
     creator: "@rahulhingv97727",
-    images: ["/og-image.jpg"],
+    images: ["https://rahulhingve.pro/og-image.jpg"],
   },
   robots: {
     index: true,
