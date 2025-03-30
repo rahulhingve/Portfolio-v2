@@ -1,13 +1,52 @@
-import { Inter } from 'next/font/google'
-import './globals.css'
-import { ThemeProvider } from "@/components/theme-provider"
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import "./globals.css";
+import { ThemeProvider } from "@/components/theme-provider";
 
-const inter = Inter({ subsets: ['latin'] })
 
-export const metadata = {
-  title: 'Rahul Hingve - Software Engineer',
-  description: 'Portfolio of Rahul Hingve, a developer passionate about learning and building open-source software.',
-}
+const inter = Inter({ subsets: ["latin"] });
+
+export const metadata: Metadata = {
+  title: "Rahul Hingve | Full Stack Developer",
+  description: "Portfolio of Rahul Hingve - A passionate full-stack developer specializing in web development and blockchain applications. View my projects, skills, and experience.",
+  keywords: "Rahul Hingve, rahulhingve, full stack developer, web developer, blockchain developer, portfolio, software engineer",
+  authors: [{ name: "Rahul Hingve" }],
+  creator: "Rahul Hingve",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://rahulhingve.pro",
+    title: "Rahul Hingve | Full Stack Developer",
+    description: "Portfolio of Rahul Hingve - A passionate full-stack developer specializing in web development and blockchain applications.",
+    siteName: "Rahul Hingve Portfolio",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Rahul Hingve Portfolio",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Rahul Hingve | Full Stack Developer",
+    description: "Portfolio of Rahul Hingve - A passionate full-stack developer specializing in web development and blockchain applications.",
+    creator: "@rahulhingv97727",
+    images: ["/og-image.jpg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+};
 
 export default function RootLayout({
   children,
