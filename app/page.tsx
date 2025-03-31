@@ -35,7 +35,7 @@ export default function Home() {
       {showBlur && <BlurEffect />}
       <FloatingNav navItems={navItems} />
       
-      <div className="relative">
+      <div className="relative pt-20 md:pt-24">
         {/* Background gradient */}
         <div className="absolute inset-0 bg-gradient-to-b from-primary-50 to-white dark:from-gray-900 dark:to-gray-800 -z-10" />
         
