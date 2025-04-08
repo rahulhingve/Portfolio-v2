@@ -12,6 +12,30 @@ export const metadata: Metadata = {
   keywords: "Rahul Hingve, rahul hingve, rahulhingve, rahul hingve portfolio, rahulhingve portfolio, full stack developer, web developer, blockchain developer, portfolio, software engineer, react developer, next.js developer, typescript developer, node.js developer, mern stack developer",
   authors: [{ name: "Rahul Hingve" }],
   creator: "Rahul Hingve",
+  icons: {
+    icon: [
+      { url: "/favicon/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon/favicon.ico", sizes: "any" },
+    ],
+    apple: [
+      { url: "/favicon/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+    other: [
+      {
+        rel: "mask-icon",
+        url: "/favicon/safari-pinned-tab.svg",
+        color: "#5bbad5",
+      },
+    ],
+  },
+  manifest: "/favicon/site.webmanifest",
+  themeColor: "#ffffff",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "Rahul Hingve Portfolio",
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
