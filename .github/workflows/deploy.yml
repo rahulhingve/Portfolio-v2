@@ -64,3 +64,6 @@ jobs:
             
             # Save PM2 process list
             pm2 save 
+
+            # Check logs of portfolio
+            pm2 logs portfolio --lines 10
