@@ -43,14 +43,14 @@ jobs:
             export PATH="/root/.nvm/versions/node/v22.14.0/bin:$PATH"
             
             # Navigate to project directory
-            cd Portfolio-v2
+            cd sites/Portfolio-v2
             
             # Pull latest changes
             git pull origin main
             
             # Stop and delete the PM2 process
             pm2 stop portfolio || true
-            pm2 delete portfolio || true
+            
             
             # Clean build directory
             rm -rf .next
@@ -59,8 +59,8 @@ jobs:
             pnpm install
             pnpm build
             
-            # Start the application with new PM2 config
-            pm2 start ecosystem.config.js
+            # Start the application 
+            pm2 start pnpm --name portfolio -- start
             
             # Save PM2 process list
             pm2 save 
