@@ -7,9 +7,7 @@ import { Contact } from "@/components/contact"
 import { Footer } from "@/components/footer"
 import { Skills } from "@/components/skills"
 import { FloatingNav } from "@/components/ui/floating-navbar"
-import { BlurEffect } from "@/components/ui/blur-effect"
 import { IconHome, IconCode, IconTimeline, IconTools, IconMail } from "@tabler/icons-react"
-import { useState, useEffect } from "react"
 
 const navItems = [
   { name: "Home", link: "#home", icon: IconHome },
@@ -20,33 +18,24 @@ const navItems = [
 ];
 
 export default function Home() {
-  const [showBlur, setShowBlur] = useState(true);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowBlur(false);
-    }, 800); // Match the duration of the blur effect
-
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
-    <main className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
-      {showBlur && <BlurEffect />}
+    <main className="min-h-screen bg-[#0a0a0f] text-white relative">
+      {/* Mesh gradient background */}
+      <div className="mesh-gradient" />
+
+      {/* Noise overlay for texture */}
+      <div className="noise-overlay" />
+
+      {/* Navigation */}
       <FloatingNav navItems={navItems} />
-      
-      <div className="relative pt-20 md:pt-24">
-        {/* Background gradient */}
-        <div className="absolute inset-0 bg-gradient-to-b from-primary-50 to-white dark:from-gray-900 dark:to-gray-800 -z-10" />
-        
-        {/* Main content */}
-        <div className="relative">
-          <Homepage id="home" />
-          <Timeline id="timeline" />
-          <Skills id="skills" />
-          <Projects id="projects" />
-          <Contact id="contact" />
-        </div>
+
+      {/* Main content */}
+      <div className="relative">
+        <Homepage id="home" />
+        <Projects id="projects" />
+        <Timeline id="timeline" />
+        <Skills id="skills" />
+        <Contact id="contact" />
       </div>
 
       <Footer />
