@@ -1,24 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { IconBrandGithub, IconBrandLinkedin, IconBrandTwitter, IconArrowUp, IconHeart } from "@tabler/icons-react";
+import { IconBrandGithub, IconBrandLinkedin, IconBrandTwitter, IconArrowUp, IconHeart, IconTerminal2 } from "@tabler/icons-react";
+import { useEffect } from "react";
 
 const socialLinks = [
-  {
-    name: "GitHub",
-    icon: IconBrandGithub,
-    href: "https://github.com/rahulhingve",
-  },
-  {
-    name: "LinkedIn",
-    icon: IconBrandLinkedin,
-    href: "https://www.linkedin.com/in/rahul-hingve-b5a582263/",
-  },
-  {
-    name: "Twitter",
-    icon: IconBrandTwitter,
-    href: "https://x.com/rahulhingv97727",
-  },
+  { name: "GitHub", icon: IconBrandGithub, href: "https://github.com/rahulhingve" },
+  { name: "LinkedIn", icon: IconBrandLinkedin, href: "https://www.linkedin.com/in/rahul-hingve-b5a582263/" },
+  { name: "Twitter", icon: IconBrandTwitter, href: "https://x.com/rahulhingv97727" },
 ];
 
 const quickLinks = [
@@ -32,6 +21,25 @@ const quickLinks = [
 export function Footer() {
   const currentYear = new Date().getFullYear();
 
+  // Console easter egg
+  useEffect(() => {
+    console.log(`
+%c╔═══════════════════════════════════════════════════════╗
+║                                                       ║
+║   Hey there, fellow developer! 👋                    ║
+║                                                       ║
+║   Since you're inspecting the code,                  ║
+║   you might as well hire me.                         ║
+║                                                       ║
+║   📧 rahulpawar2001.rp@gmail.com                     ║
+║   🐙 github.com/rahulhingve                          ║
+║                                                       ║
+║   Made with ☕ and countless Stack Overflow tabs.    ║
+║                                                       ║
+╚═══════════════════════════════════════════════════════╝
+`, 'color: #a78bfa; font-family: monospace;');
+  }, []);
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -44,17 +52,31 @@ export function Footer() {
   };
 
   return (
-    <footer className="relative border-t border-white/[0.05] bg-black/20">
-      {/* Gradient line at top */}
-      <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-purple-500/50 to-transparent" />
+    <footer className="relative border-t border-white/[0.05] bg-black/30">
+      {/* Terminal prompt line at top */}
+      <div className="border-b border-white/[0.05] py-3">
+        <div className="container">
+          <div className="font-mono text-xs text-gray-500 flex items-center gap-2 overflow-x-auto">
+            <span className="text-green-400">rahul@portfolio</span>
+            <span className="text-gray-500">:</span>
+            <span className="text-cyan-400">~</span>
+            <span className="text-gray-500">$</span>
+            <span className="text-gray-400">exit 0</span>
+            <span className="text-gray-500 ml-4">// Thanks for visiting!</span>
+          </div>
+        </div>
+      </div>
 
-      <div className="container py-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+      <div className="container py-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {/* Brand */}
           <div className="space-y-4">
-            <h3 className="text-2xl font-bold gradient-text">Rahul Hingve</h3>
-            <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
-              A passionate full-stack developer focused on creating innovative web solutions and blockchain applications.
+            <div className="flex items-center gap-2">
+              <IconTerminal2 className="w-6 h-6 text-purple-400" />
+              <span className="text-xl font-bold text-gradient">Rahul Hingve</span>
+            </div>
+            <p className="text-gray-500 text-sm leading-relaxed max-w-xs font-mono">
+              /* A passionate full-stack developer building the future of the web */
             </p>
             {/* Social Links */}
             <div className="flex gap-3 pt-2">
@@ -64,7 +86,7 @@ export function Footer() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2.5 rounded-xl bg-white/[0.03] border border-white/[0.05] text-gray-400 hover:text-purple-400 hover:border-purple-500/30 hover:bg-purple-500/10 transition-all duration-300"
+                  className="p-2.5 rounded-lg bg-white/[0.03] border border-white/[0.05] text-gray-500 hover:text-purple-400 hover:border-purple-500/30 transition-all"
                 >
                   <social.icon className="w-5 h-5" />
                 </a>
@@ -74,15 +96,18 @@ export function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-white font-semibold mb-4">Quick Links</h4>
-            <ul className="space-y-2">
+            <h4 className="text-white font-semibold mb-4 font-mono text-sm">
+              <span className="text-gray-500">const</span> quickLinks <span className="text-gray-500">=</span>
+            </h4>
+            <ul className="space-y-2 font-mono text-sm">
               {quickLinks.map((link) => (
                 <li key={link.name}>
                   <a
                     href={link.href}
                     onClick={(e) => handleScroll(e, link.href)}
-                    className="text-gray-400 hover:text-purple-400 transition-colors text-sm"
+                    className="text-gray-500 hover:text-purple-400 transition-colors"
                   >
+                    <span className="text-gray-600 mr-2">-</span>
                     {link.name}
                   </a>
                 </li>
@@ -92,28 +117,35 @@ export function Footer() {
 
           {/* Get in Touch */}
           <div>
-            <h4 className="text-white font-semibold mb-4">Get in Touch</h4>
-            <p className="text-gray-400 text-sm mb-4">
-              Have a project in mind? Let&apos;s create something amazing together.
-            </p>
-            <a
-              href="#contact"
-              onClick={(e) => handleScroll(e, '#contact')}
-              className="inline-flex items-center gap-2 text-sm font-medium text-purple-400 hover:text-purple-300 transition-colors"
-            >
-              Start a conversation
-              <span>→</span>
-            </a>
+            <h4 className="text-white font-semibold mb-4 font-mono text-sm">
+              <span className="text-gray-500">async function</span> getInTouch<span className="text-gray-500">()</span>
+            </h4>
+            <div className="font-mono text-sm text-gray-500 space-y-1">
+              <p>&#123;</p>
+              <p className="pl-4 text-gray-400">// Have a project in mind?</p>
+              <p className="pl-4">
+                <span className="token-keyword">return</span>{" "}
+                <a
+                  href="#contact"
+                  onClick={(e) => handleScroll(e, '#contact')}
+                  className="token-string hover:text-purple-400 transition-colors"
+                >
+                  {'"Let\'s connect"'}
+                </a>;
+              </p>
+              <p>&#125;</p>
+            </div>
           </div>
         </div>
 
         {/* Divider */}
-        <div className="my-8 h-[1px] bg-gradient-to-r from-transparent via-white/[0.08] to-transparent" />
+        <div className="my-8 h-[1px] bg-white/[0.05]" />
 
         {/* Bottom section */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-gray-500 text-sm flex items-center gap-1">
-            © {currentYear} Made with <IconHeart className="w-4 h-4 text-red-500 inline" /> by Rahul Hingve
+          <p className="text-gray-600 text-sm font-mono flex items-center gap-1">
+            <span className="text-gray-500">// </span>
+            © {currentYear} Made with <IconHeart className="w-4 h-4 text-red-500 inline mx-1" /> by Rahul Hingve
           </p>
 
           {/* Back to top button */}
@@ -121,12 +153,24 @@ export function Footer() {
             onClick={scrollToTop}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.03] border border-white/[0.08] text-gray-400 hover:text-purple-400 hover:border-purple-500/30 transition-all duration-300"
+            className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white/[0.03] border border-white/[0.06] text-gray-500 hover:text-purple-400 hover:border-purple-500/30 transition-all font-mono text-sm"
           >
-            <span className="text-sm">Back to top</span>
+            <span>scrollTo(0)</span>
             <IconArrowUp className="w-4 h-4" />
           </motion.button>
         </div>
+
+        {/* Easter egg hint */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 2 }}
+          className="text-center mt-6"
+        >
+          <span className="text-gray-700 text-xs font-mono">
+            Pro tip: Open DevTools for a surprise 🎁
+          </span>
+        </motion.div>
       </div>
     </footer>
   );

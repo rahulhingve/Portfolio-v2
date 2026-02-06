@@ -54,59 +54,76 @@ export function FloatingNav({ navItems, className = "" }: FloatingNavProps) {
     <motion.div
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.5, delay: 0.2 }}
+      transition={{ duration: 0.5, delay: 0.5 }}
       className={`fixed top-4 left-0 right-0 z-50 ${className}`}
     >
       <div className="container px-4">
         <motion.div
-          className={`backdrop-blur-xl rounded-full shadow-lg border transition-all duration-300 ${isScrolled
-              ? 'bg-gray-900/80 border-white/[0.08]'
+          className={`backdrop-blur-xl rounded-xl border transition-all duration-300 ${isScrolled
+              ? 'bg-gray-900/90 border-white/[0.1] shadow-lg'
               : 'bg-white/[0.03] border-white/[0.05]'
             }`}
         >
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center justify-center p-1.5">
-            {navItems.map((navItem, idx) => {
-              const isActive = activeSection === navItem.link.replace('#', '');
-              return (
-                <a
-                  key={`link-${idx}`}
-                  href={navItem.link}
-                  onClick={(e) => handleScroll(e, navItem.link)}
-                  className={`relative flex items-center px-4 py-2.5 text-sm font-medium rounded-full transition-all duration-300 ${isActive
-                      ? 'text-white'
-                      : 'text-gray-400 hover:text-white'
-                    }`}
-                >
-                  {/* Active background */}
-                  {isActive && (
-                    <motion.div
-                      layoutId="activeSection"
-                      className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-cyan-500/20 rounded-full border border-purple-500/30"
-                      transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                    />
-                  )}
-                  <span className="relative flex items-center">
+          <nav className="hidden md:flex items-center justify-between p-2">
+            {/* Logo/Prompt */}
+            <div className="flex items-center gap-2 px-3 font-mono text-sm">
+              <span className="text-green-400">~</span>
+              <span className="text-gray-500">/</span>
+              <span className="text-cyan-400">rahul</span>
+            </div>
+
+            {/* Nav Items */}
+            <div className="flex items-center gap-1">
+              {navItems.map((navItem, idx) => {
+                const isActive = activeSection === navItem.link.replace('#', '');
+                return (
+                  <a
+                    key={`link-${idx}`}
+                    href={navItem.link}
+                    onClick={(e) => handleScroll(e, navItem.link)}
+                    className={`relative flex items-center px-4 py-2 text-sm font-mono rounded-lg transition-all duration-200 ${isActive
+                        ? 'text-purple-400 bg-purple-500/10'
+                        : 'text-gray-400 hover:text-white hover:bg-white/[0.05]'
+                      }`}
+                  >
                     <navItem.icon className="w-4 h-4 mr-2" />
                     {navItem.name}
-                  </span>
-                </a>
-              );
-            })}
+                    {isActive && (
+                      <motion.div
+                        layoutId="navIndicator"
+                        className="absolute bottom-0 left-2 right-2 h-0.5 bg-purple-500 rounded-full"
+                        transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                      />
+                    )}
+                  </a>
+                );
+              })}
+            </div>
+
+            {/* Status */}
+            <div className="flex items-center gap-2 px-3">
+              <span className="status-dot status-online" />
+              <span className="text-xs text-gray-500 font-mono">online</span>
+            </div>
           </nav>
 
           {/* Mobile Navigation */}
-          <div className="md:hidden p-1.5">
+          <div className="md:hidden p-2">
             <motion.button
               onClick={() => setIsOpen(!isOpen)}
-              className="w-full flex items-center justify-center px-4 py-2.5 text-sm font-medium text-gray-300 hover:text-white rounded-full transition-all duration-200"
+              className="w-full flex items-center justify-between px-4 py-2.5 text-sm font-mono text-gray-300 hover:text-white rounded-lg transition-all duration-200"
               whileTap={{ scale: 0.98 }}
             >
-              <span>Menu</span>
+              <div className="flex items-center gap-2">
+                <span className="text-green-400">~</span>
+                <span className="text-gray-500">/</span>
+                <span className="text-cyan-400">{activeSection}</span>
+              </div>
               <motion.svg
                 animate={{ rotate: isOpen ? 180 : 0 }}
                 transition={{ duration: 0.2 }}
-                className="w-4 h-4 ml-2"
+                className="w-4 h-4"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -124,7 +141,7 @@ export function FloatingNav({ navItems, className = "" }: FloatingNavProps) {
                   transition={{ duration: 0.3, ease: "easeInOut" }}
                   className="overflow-hidden"
                 >
-                  <nav className="flex flex-col p-2 pt-0 space-y-1">
+                  <nav className="flex flex-col p-2 pt-0 space-y-1 border-t border-white/[0.05] mt-2">
                     {navItems.map((navItem, idx) => {
                       const isActive = activeSection === navItem.link.replace('#', '');
                       return (
@@ -132,8 +149,8 @@ export function FloatingNav({ navItems, className = "" }: FloatingNavProps) {
                           key={`mobile-link-${idx}`}
                           href={navItem.link}
                           onClick={(e) => handleScroll(e, navItem.link)}
-                          className={`flex items-center px-4 py-2.5 text-sm font-medium rounded-xl transition-all duration-200 ${isActive
-                              ? 'text-white bg-gradient-to-r from-purple-500/20 to-cyan-500/20 border border-purple-500/30'
+                          className={`flex items-center px-4 py-2.5 text-sm font-mono rounded-lg transition-all duration-200 ${isActive
+                              ? 'text-purple-400 bg-purple-500/10'
                               : 'text-gray-400 hover:text-white hover:bg-white/[0.05]'
                             }`}
                           initial={{ opacity: 0, x: -10 }}

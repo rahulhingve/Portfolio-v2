@@ -1,30 +1,30 @@
-"use client"
+"use client";
 
-import { Homepage } from "@/components/homepage"
-import { Timeline } from "@/components/timeline"
-import { Projects } from "@/components/projects"
-import { Contact } from "@/components/contact"
-import { Footer } from "@/components/footer"
-import { Skills } from "@/components/skills"
-import { FloatingNav } from "@/components/ui/floating-navbar"
-import { IconHome, IconCode, IconTimeline, IconTools, IconMail } from "@tabler/icons-react"
+import { Homepage } from "@/components/homepage";
+import { Timeline } from "@/components/timeline";
+import { Projects } from "@/components/projects";
+import { Contact } from "@/components/contact";
+import { Footer } from "@/components/footer";
+import { Skills } from "@/components/skills";
+import { FloatingNav } from "@/components/ui/floating-navbar";
+import { IconHome, IconCode, IconTimeline, IconTools, IconMail } from "@tabler/icons-react";
 
 const navItems = [
-  { name: "Home", link: "#home", icon: IconHome },
-  { name: "Projects", link: "#projects", icon: IconCode },
-  { name: "Experience", link: "#timeline", icon: IconTimeline },
-  { name: "Skills", link: "#skills", icon: IconTools },
-  { name: "Contact", link: "#contact", icon: IconMail },
+  { name: "home", link: "#home", icon: IconHome },
+  { name: "projects", link: "#projects", icon: IconCode },
+  { name: "journey", link: "#timeline", icon: IconTimeline },
+  { name: "skills", link: "#skills", icon: IconTools },
+  { name: "contact", link: "#contact", icon: IconMail },
 ];
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#0a0a0f] text-white relative">
-      {/* Mesh gradient background */}
-      <div className="mesh-gradient" />
+    <main className="min-h-screen bg-[hsl(240,15%,4%)] text-white relative">
+      {/* Background grid pattern */}
+      <div className="fixed inset-0 bg-grid pointer-events-none" />
 
-      {/* Noise overlay for texture */}
-      <div className="noise-overlay" />
+      {/* Gradient overlay */}
+      <div className="fixed inset-0 bg-gradient-radial pointer-events-none" />
 
       {/* Navigation */}
       <FloatingNav navItems={navItems} />
@@ -40,5 +40,5 @@ export default function Home() {
 
       <Footer />
     </main>
-  )
+  );
 }
