@@ -60,8 +60,8 @@ export function FloatingNav({ navItems, className = "" }: FloatingNavProps) {
       <div className="container px-4">
         <motion.div
           className={`backdrop-blur-xl rounded-xl border transition-all duration-300 ${isScrolled
-              ? 'bg-gray-900/90 border-white/[0.1] shadow-lg'
-              : 'bg-white/[0.03] border-white/[0.05]'
+            ? 'bg-gray-900/90 border-white/[0.1] shadow-lg'
+            : 'bg-white/[0.03] border-white/[0.05]'
             }`}
         >
           {/* Desktop Navigation */}
@@ -83,8 +83,8 @@ export function FloatingNav({ navItems, className = "" }: FloatingNavProps) {
                     href={navItem.link}
                     onClick={(e) => handleScroll(e, navItem.link)}
                     className={`relative flex items-center px-4 py-2 text-sm font-mono rounded-lg transition-all duration-200 ${isActive
-                        ? 'text-purple-400 bg-purple-500/10'
-                        : 'text-gray-400 hover:text-white hover:bg-white/[0.05]'
+                      ? 'text-purple-400 bg-purple-500/10'
+                      : 'text-gray-400 hover:text-white hover:bg-white/[0.05]'
                       }`}
                   >
                     <navItem.icon className="w-4 h-4 mr-2" />
@@ -141,15 +141,19 @@ export function FloatingNav({ navItems, className = "" }: FloatingNavProps) {
                   transition={{ duration: 0.3, ease: "easeInOut" }}
                   className="overflow-hidden"
                 >
-                  <nav className="flex flex-col p-2 pt-0 space-y-1 border-t border-white/[0.05] mt-2">
+                  <nav className="flex flex-col p-2 pt-2 space-y-1 border-t border-white/[0.05] mt-2">
                     {navItems.map((navItem, idx) => {
                       const isActive = activeSection === navItem.link.replace('#', '');
                       return (
-                        <motion.a
+                        <motion.button
                           key={`mobile-link-${idx}`}
-                          href={navItem.link}
-                          onClick={(e) => handleScroll(e, navItem.link)}
-                          className={`flex items-center px-4 py-2.5 text-sm font-mono rounded-lg transition-all duration-200 ${isActive
+                          onClick={() => {
+                            const targetId = navItem.link.replace('#', '');
+                            const elem = document.getElementById(targetId);
+                            elem?.scrollIntoView({ behavior: 'smooth' });
+                            setIsOpen(false);
+                          }}
+                          className={`flex items-center px-4 py-3 text-sm font-mono rounded-lg transition-all duration-200 w-full text-left ${isActive
                               ? 'text-purple-400 bg-purple-500/10'
                               : 'text-gray-400 hover:text-white hover:bg-white/[0.05]'
                             }`}
@@ -159,7 +163,7 @@ export function FloatingNav({ navItems, className = "" }: FloatingNavProps) {
                         >
                           <navItem.icon className="w-4 h-4 mr-3" />
                           {navItem.name}
-                        </motion.a>
+                        </motion.button>
                       );
                     })}
                   </nav>
