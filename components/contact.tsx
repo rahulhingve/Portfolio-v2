@@ -1,226 +1,241 @@
 "use client";
 
-import React, { useState, FormEvent } from "react";
-import { IconMail, IconMapPin, IconBrandGithub, IconBrandLinkedin, IconBrandTwitter } from "@tabler/icons-react";
+import { motion } from "framer-motion";
+import { useState } from "react";
+import { IconMail, IconMapPin, IconBrandGithub, IconBrandLinkedin, IconBrandTwitter, IconSend, IconCheck, IconTerminal2 } from "@tabler/icons-react";
 
-interface FormData {
-  name: string;
-  email: string;
-  message: string;
-}
+const socialLinks = [
+  {
+    name: "GitHub",
+    icon: IconBrandGithub,
+    href: "https://github.com/rahulhingve",
+    command: "github"
+  },
+  {
+    name: "LinkedIn",
+    icon: IconBrandLinkedin,
+    href: "https://www.linkedin.com/in/rahul-hingve-b5a582263/",
+    command: "linkedin"
+  },
+  {
+    name: "Twitter",
+    icon: IconBrandTwitter,
+    href: "https://x.com/rahulhingv97727",
+    command: "twitter"
+  },
+];
 
 export function Contact({ id }: { id: string }) {
-  const [formData, setFormData] = useState<FormData>({
-    name: "",
-    email: "",
-    message: ""
-  });
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<{ type: 'success' | 'error' | null; message: string }>({
-    type: null,
-    message: ''
-  });
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
-
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Basic validation
-    if (!formData.name || !formData.email || !formData.message) {
-      setSubmitStatus({
-        type: 'error',
-        message: 'Please fill in all fields'
-      });
+    // Simulate sending (opens email)
+    const mailtoLink = `mailto:rahulpawar2001.rp@gmail.com?subject=Portfolio Contact from ${formData.name}&body=${encodeURIComponent(`From: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`)}`;
+    window.open(mailtoLink);
+
+    setTimeout(() => {
       setIsSubmitting(false);
-      return;
-    }
-
-    // Create simple mailto link
-    const mailtoLink = `mailto:rahulpawar2001.rp@gmail.com`;
-    window.location.href = mailtoLink;
-
-    // Show success message
-    setSubmitStatus({
-      type: 'success', 
-      message: 'Email client opened successfully!'
-    });
-
-    // Clear form
-    setFormData({
-      name: "",
-      email: "",
-      message: ""
-    });
-    
-    setIsSubmitting(false);
+      setIsSubmitted(true);
+      setTimeout(() => setIsSubmitted(false), 3000);
+    }, 500);
   };
 
   return (
-    <section id={id} className="section-padding bg-gray-50 dark:bg-gray-900">
+    <section id={id} className="section relative">
       <div className="container">
-        <div className="text-center mb-16">
-          <h2 className="heading">Get in Touch</h2>
-          <p className="text-gray-600 dark:text-gray-400 mb-8">
-            I&apos;m always open to discussing new projects, creative ideas or opportunities to be part of your visions.
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+          className="mb-12"
+        >
+          <div className="flex items-center gap-2 mb-4">
+            <span className="font-mono text-sm text-purple-400">~/contact</span>
+            <span className="text-gray-500">$</span>
+            <span className="font-mono text-sm text-gray-300">ssh connect@rahul.dev</span>
+          </div>
+
+          <h2 className="heading-lg text-white mb-4">Get In Touch</h2>
+          <p className="text-gray-400 max-w-2xl">
+            Have a project in mind or want to collaborate? Let&apos;s establish a connection.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          {/* Contact Information */}
-          <div className="space-y-8">
-            <div className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-md rounded-xl p-6 shadow-lg">
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-6">
-                Contact Information
-              </h3>
-              
-              <div className="space-y-4">
-                <div className="flex items-start space-x-4">
-                  <div className="w-10 h-10 rounded-full bg-primary-100/80 dark:bg-primary-900/80 backdrop-blur-sm flex items-center justify-center">
-                    <IconMail className="w-5 h-5 text-primary-500" />
-                  </div>
-                  <div>
-                    <h4 className="font-medium text-gray-900 dark:text-white">Email</h4>
-                    <p className="text-gray-600 dark:text-gray-300">rahulpawar2001.rp@gmail.com</p>
-                  </div>
+        <div className="grid lg:grid-cols-2 gap-8">
+          {/* Left - Info */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            className="space-y-6"
+          >
+            {/* Status card */}
+            <div className="card">
+              <div className="flex items-center gap-3 mb-4">
+                <IconTerminal2 className="w-5 h-5 text-green-400" />
+                <span className="font-mono text-sm text-green-400">Connection established</span>
+              </div>
+
+              <div className="font-mono text-sm space-y-2">
+                <div className="flex items-center gap-2 text-gray-400">
+                  <span className="text-gray-500">$</span>
+                  <span>ping rahul</span>
                 </div>
-
-                {/* <div className="flex items-start space-x-4">
-                  <div className="w-10 h-10 rounded-full bg-primary-100/80 dark:bg-primary-900/80 backdrop-blur-sm flex items-center justify-center">
-                    <IconPhone className="w-5 h-5 text-primary-500" />
-                  </div>
-                  <div>
-                    <h4 className="font-medium text-gray-900 dark:text-white">Phone</h4>
-                    <p className="text-gray-600 dark:text-gray-300">+1 (234) 567-8900</p>
-                  </div>
-                </div> */}
-
-                <div className="flex items-start space-x-4">
-                  <div className="w-10 h-10 rounded-full bg-primary-100/80 dark:bg-primary-900/80 backdrop-blur-sm flex items-center justify-center">
-                    <IconMapPin className="w-5 h-5 text-primary-500" />
-                  </div>
-                  <div>
-                    <h4 className="font-medium text-gray-900 dark:text-white">Location</h4>
-                    <p className="text-gray-600 dark:text-gray-300">Bhopal, India</p>
-                  </div>
+                <div className="flex items-center gap-3 pl-4">
+                  <span className="status-dot status-online" />
+                  <span className="text-green-400">Online - Available for opportunities</span>
                 </div>
               </div>
             </div>
 
-            <div className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-md rounded-xl p-6 shadow-lg">
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-6">
-                Social Links
-              </h3>
-              
-              <div className="flex space-x-4">
-                <a
-                  href="https://github.com/rahulhingve"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full bg-gray-100/80 dark:bg-gray-800/80 backdrop-blur-sm flex items-center justify-center hover:bg-primary-100/80 dark:hover:bg-primary-900/80"
-                >
-                  <IconBrandGithub className="w-5 h-5 text-gray-600 dark:text-gray-300" />
-                </a>
-                <a
-                  href="https://www.linkedin.com/in/rahul-hingve-b5a582263"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full bg-gray-100/80 dark:bg-gray-800/80 backdrop-blur-sm flex items-center justify-center hover:bg-primary-100/80 dark:hover:bg-primary-900/80"
-                >
-                  <IconBrandLinkedin className="w-5 h-5 text-gray-600 dark:text-gray-300" />
-                </a>
-                <a
-                  href="https://x.com/rahulhingv97727"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full bg-gray-100/80 dark:bg-gray-800/80 backdrop-blur-sm flex items-center justify-center hover:bg-primary-100/80 dark:hover:bg-primary-900/80"
-                >
-                  <IconBrandTwitter className="w-5 h-5 text-gray-600 dark:text-gray-300" />
-                </a>
-              </div>
-            </div>
-          </div>
-
-          {/* Contact Form */}
-          <div className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-md rounded-xl p-6 shadow-lg">
-            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-6">
-              Send a Message
-            </h3>
-
-            <form onSubmit={handleSubmit} className="space-y-6">
-              {submitStatus.type && (
-                <div className={`p-3 rounded-lg ${
-                  submitStatus.type === 'success' 
-                    ? 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300' 
-                    : 'bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300'
-                }`}>
-                  {submitStatus.message}
-                </div>
-              )}
-
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                  Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-                  placeholder="Your name"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-                  placeholder="your.email@example.com"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  rows={4}
-                  className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-                  placeholder="Your message"
-                />
-              </div>
-
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className={`w-full button button-primary bg-blue-600/80 dark:bg-blue-500/80 backdrop-blur-sm text-white hover:bg-blue-700/80 dark:hover:bg-blue-600/80 transition-all duration-300 ${
-                  isSubmitting ? 'opacity-70 cursor-not-allowed' : ''
-                }`}
+            {/* Contact info */}
+            <div className="space-y-4">
+              <a
+                href="mailto:rahulpawar2001.rp@gmail.com"
+                className="flex items-center gap-4 p-4 rounded-lg bg-white/[0.02] border border-white/[0.06] hover:border-purple-500/30 transition-colors group"
               >
-                {isSubmitting ? 'Opening email client...' : 'Send Message'}
-              </button>
-            </form>
-          </div>
+                <div className="p-2 rounded-lg bg-purple-500/10 text-purple-400 group-hover:bg-purple-500/20 transition-colors">
+                  <IconMail className="w-5 h-5" />
+                </div>
+                <div>
+                  <div className="text-xs text-gray-500 font-mono">$ cat email.txt</div>
+                  <div className="text-gray-300">rahulpawar2001.rp@gmail.com</div>
+                </div>
+              </a>
+
+              <div className="flex items-center gap-4 p-4 rounded-lg bg-white/[0.02] border border-white/[0.06]">
+                <div className="p-2 rounded-lg bg-cyan-500/10 text-cyan-400">
+                  <IconMapPin className="w-5 h-5" />
+                </div>
+                <div>
+                  <div className="text-xs text-gray-500 font-mono">$ pwd</div>
+                  <div className="text-gray-300">Bhopal, India</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Social links */}
+            <div className="space-y-3">
+              <div className="font-mono text-xs text-gray-500">$ open --all-links</div>
+              <div className="flex gap-3">
+                {socialLinks.map((social) => (
+                  <a
+                    key={social.name}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-3 rounded-lg bg-white/[0.03] border border-white/[0.06] text-gray-400 hover:text-purple-400 hover:border-purple-500/30 hover:bg-purple-500/10 transition-all"
+                    title={social.name}
+                  >
+                    <social.icon className="w-5 h-5" />
+                  </a>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Right - Form */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            viewport={{ once: true }}
+          >
+            <div className="bg-white/[0.02] rounded-xl border border-white/[0.06] overflow-hidden">
+              {/* Terminal header */}
+              <div className="flex items-center gap-2 px-4 py-3 border-b border-white/[0.06] bg-white/[0.02]">
+                <div className="flex gap-2">
+                  <div className="w-3 h-3 rounded-full bg-red-500/80" />
+                  <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
+                  <div className="w-3 h-3 rounded-full bg-green-500/80" />
+                </div>
+                <span className="font-mono text-xs text-gray-400 ml-2">send-message.sh</span>
+              </div>
+
+              {/* Form content */}
+              <form onSubmit={handleSubmit} className="p-6 space-y-4">
+                <div className="font-mono text-sm text-gray-500 mb-4">
+                  # Fill out the form below
+                </div>
+
+                {/* Name */}
+                <div className="space-y-2">
+                  <label className="font-mono text-xs text-gray-400">
+                    <span className="token-keyword">const</span> name <span className="text-gray-500">=</span>
+                  </label>
+                  <input
+                    type="text"
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    placeholder='"Your Name"'
+                    required
+                    className="w-full px-4 py-3 rounded-lg bg-white/[0.03] border border-white/[0.08] focus:border-purple-500/50 focus:outline-none focus:ring-1 focus:ring-purple-500/50 text-white font-mono text-sm placeholder:text-gray-600 transition-colors"
+                  />
+                </div>
+
+                {/* Email */}
+                <div className="space-y-2">
+                  <label className="font-mono text-xs text-gray-400">
+                    <span className="token-keyword">const</span> email <span className="text-gray-500">=</span>
+                  </label>
+                  <input
+                    type="email"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    placeholder='"your@email.com"'
+                    required
+                    className="w-full px-4 py-3 rounded-lg bg-white/[0.03] border border-white/[0.08] focus:border-purple-500/50 focus:outline-none focus:ring-1 focus:ring-purple-500/50 text-white font-mono text-sm placeholder:text-gray-600 transition-colors"
+                  />
+                </div>
+
+                {/* Message */}
+                <div className="space-y-2">
+                  <label className="font-mono text-xs text-gray-400">
+                    <span className="token-keyword">const</span> message <span className="text-gray-500">=</span>
+                  </label>
+                  <textarea
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    placeholder='"Tell me about your project..."'
+                    required
+                    rows={4}
+                    className="w-full px-4 py-3 rounded-lg bg-white/[0.03] border border-white/[0.08] focus:border-purple-500/50 focus:outline-none focus:ring-1 focus:ring-purple-500/50 text-white font-mono text-sm placeholder:text-gray-600 resize-none transition-colors"
+                  />
+                </div>
+
+                {/* Submit */}
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full btn btn-primary font-mono"
+                >
+                  {isSubmitted ? (
+                    <>
+                      <IconCheck className="w-5 h-5" />
+                      Message sent!
+                    </>
+                  ) : isSubmitting ? (
+                    <>
+                      <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      <span>$ npm run send-message</span>
+                      <IconSend className="w-4 h-4" />
+                    </>
+                  )}
+                </button>
+              </form>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>
