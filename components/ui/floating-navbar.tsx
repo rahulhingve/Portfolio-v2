@@ -2,7 +2,7 @@
 
 import { Icon } from "@tabler/icons-react";
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 interface NavItem {
   name: string;
@@ -42,11 +42,12 @@ export function FloatingNav({ navItems, className = "" }: FloatingNavProps) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [navItems]);
 
-  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
+  const scrollToSection = (href: string) => {
     const targetId = href.replace('#', '');
     const elem = document.getElementById(targetId);
-    elem?.scrollIntoView({ behavior: 'smooth' });
+    if (elem) {
+      elem.scrollIntoView({ behavior: 'smooth' });
+    }
     setIsOpen(false);
   };
 
@@ -58,10 +59,10 @@ export function FloatingNav({ navItems, className = "" }: FloatingNavProps) {
       className={`fixed top-4 left-0 right-0 z-50 ${className}`}
     >
       <div className="container px-4">
-        <motion.div
+        <div
           className={`backdrop-blur-xl rounded-xl border transition-all duration-300 ${isScrolled
-            ? 'bg-gray-900/90 border-white/[0.1] shadow-lg'
-            : 'bg-white/[0.03] border-white/[0.05]'
+              ? 'bg-gray-900/90 border-white/[0.1] shadow-lg'
+              : 'bg-white/[0.03] border-white/[0.05]'
             }`}
         >
           {/* Desktop Navigation */}
@@ -78,13 +79,12 @@ export function FloatingNav({ navItems, className = "" }: FloatingNavProps) {
               {navItems.map((navItem, idx) => {
                 const isActive = activeSection === navItem.link.replace('#', '');
                 return (
-                  <a
+                  <button
                     key={`link-${idx}`}
-                    href={navItem.link}
-                    onClick={(e) => handleScroll(e, navItem.link)}
+                    onClick={() => scrollToSection(navItem.link)}
                     className={`relative flex items-center px-4 py-2 text-sm font-mono rounded-lg transition-all duration-200 ${isActive
-                      ? 'text-purple-400 bg-purple-500/10'
-                      : 'text-gray-400 hover:text-white hover:bg-white/[0.05]'
+                        ? 'text-purple-400 bg-purple-500/10'
+                        : 'text-gray-400 hover:text-white hover:bg-white/[0.05]'
                       }`}
                   >
                     <navItem.icon className="w-4 h-4 mr-2" />
@@ -96,7 +96,7 @@ export function FloatingNav({ navItems, className = "" }: FloatingNavProps) {
                         transition={{ type: "spring", stiffness: 300, damping: 30 }}
                       />
                     )}
-                  </a>
+                  </button>
                 );
               })}
             </div>
@@ -109,69 +109,53 @@ export function FloatingNav({ navItems, className = "" }: FloatingNavProps) {
           </nav>
 
           {/* Mobile Navigation */}
-          <div className="md:hidden p-2">
-            <motion.button
+          <div className="md:hidden">
+            {/* Toggle Button */}
+            <button
               onClick={() => setIsOpen(!isOpen)}
-              className="w-full flex items-center justify-between px-4 py-2.5 text-sm font-mono text-gray-300 hover:text-white rounded-lg transition-all duration-200"
-              whileTap={{ scale: 0.98 }}
+              className="w-full flex items-center justify-between px-4 py-3 text-sm font-mono text-gray-300"
+              type="button"
             >
               <div className="flex items-center gap-2">
                 <span className="text-green-400">~</span>
                 <span className="text-gray-500">/</span>
                 <span className="text-cyan-400">{activeSection}</span>
               </div>
-              <motion.svg
-                animate={{ rotate: isOpen ? 180 : 0 }}
-                transition={{ duration: 0.2 }}
-                className="w-4 h-4"
+              <svg
+                className={`w-4 h-4 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
               >
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-              </motion.svg>
-            </motion.button>
+              </svg>
+            </button>
 
-            <AnimatePresence>
-              {isOpen && (
-                <motion.div
-                  initial={{ opacity: 0, height: 0 }}
-                  animate={{ opacity: 1, height: "auto" }}
-                  exit={{ opacity: 0, height: 0 }}
-                  transition={{ duration: 0.3, ease: "easeInOut" }}
-                  className="overflow-hidden"
-                >
-                  <nav className="flex flex-col p-2 pt-2 space-y-1 border-t border-white/[0.05] mt-2">
-                    {navItems.map((navItem, idx) => {
-                      const isActive = activeSection === navItem.link.replace('#', '');
-                      return (
-                        <motion.button
-                          key={`mobile-link-${idx}`}
-                          onClick={() => {
-                            const targetId = navItem.link.replace('#', '');
-                            const elem = document.getElementById(targetId);
-                            elem?.scrollIntoView({ behavior: 'smooth' });
-                            setIsOpen(false);
-                          }}
-                          className={`flex items-center px-4 py-3 text-sm font-mono rounded-lg transition-all duration-200 w-full text-left ${isActive
-                              ? 'text-purple-400 bg-purple-500/10'
-                              : 'text-gray-400 hover:text-white hover:bg-white/[0.05]'
-                            }`}
-                          initial={{ opacity: 0, x: -10 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: idx * 0.05 }}
-                        >
-                          <navItem.icon className="w-4 h-4 mr-3" />
-                          {navItem.name}
-                        </motion.button>
-                      );
-                    })}
-                  </nav>
-                </motion.div>
-              )}
-            </AnimatePresence>
+            {/* Dropdown Menu */}
+            {isOpen && (
+              <div className="border-t border-white/[0.05] px-2 pb-2">
+                {navItems.map((navItem, idx) => {
+                  const isActive = activeSection === navItem.link.replace('#', '');
+                  const IconComponent = navItem.icon;
+                  return (
+                    <button
+                      key={`mobile-link-${idx}`}
+                      type="button"
+                      onClick={() => scrollToSection(navItem.link)}
+                      className={`flex items-center w-full px-4 py-3 text-sm font-mono rounded-lg transition-all duration-200 mt-1 ${isActive
+                          ? 'text-purple-400 bg-purple-500/10'
+                          : 'text-gray-400 active:bg-white/[0.1]'
+                        }`}
+                    >
+                      <IconComponent className="w-4 h-4 mr-3" />
+                      {navItem.name}
+                    </button>
+                  );
+                })}
+              </div>
+            )}
           </div>
-        </motion.div>
+        </div>
       </div>
     </motion.div>
   );
