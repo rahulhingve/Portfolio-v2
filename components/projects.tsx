@@ -122,7 +122,7 @@ function ProjectCard({ project, isExpanded, onToggle }: ProjectCardProps) {
         transition={{ duration: 0.3 }}
         className="overflow-hidden"
       >
-        <div className="ml-8 pl-4 border-l border-white/[0.06] py-4 space-y-4">
+        <div className="ml-4 sm:ml-8 pl-3 sm:pl-4 border-l border-white/[0.06] py-4 space-y-4">
           {/* Preview image */}
           <div className="relative aspect-video rounded-lg overflow-hidden border border-white/[0.06]">
             <Image
@@ -214,7 +214,7 @@ export function Projects({ id }: { id: string }) {
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-radial opacity-50" />
 
-      <div className="container relative">
+      <div className="container relative px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

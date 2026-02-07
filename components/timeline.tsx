@@ -42,7 +42,7 @@ const timelineItems = [
 export function Timeline({ id }: { id: string }) {
   return (
     <section id={id} className="section relative">
-      <div className="container">
+      <div className="container px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -75,9 +75,9 @@ export function Timeline({ id }: { id: string }) {
               className="group"
             >
               {/* Git graph line */}
-              <div className="flex gap-4">
+              <div className="flex gap-2 sm:gap-4">
                 {/* Graph visual */}
-                <div className="flex flex-col items-center w-8 flex-shrink-0">
+                <div className="flex flex-col items-center w-6 sm:w-8 flex-shrink-0">
                   {/* Commit node */}
                   <div className={`w-4 h-4 rounded-full border-2 flex items-center justify-center
                     ${item.type === 'current'

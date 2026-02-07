@@ -55,7 +55,7 @@ export function Footer() {
     <footer className="relative border-t border-white/[0.05] bg-black/30">
       {/* Terminal prompt line at top */}
       <div className="border-b border-white/[0.05] py-3">
-        <div className="container">
+        <div className="container px-4 sm:px-6">
           <div className="font-mono text-xs text-gray-500 flex items-center gap-2 overflow-x-auto">
             <span className="text-green-400">rahul@portfolio</span>
             <span className="text-gray-500">:</span>
@@ -67,7 +67,7 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="container py-12">
+      <div className="container px-4 sm:px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {/* Brand */}
           <div className="space-y-4">

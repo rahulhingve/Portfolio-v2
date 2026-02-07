@@ -47,7 +47,7 @@ export function Contact({ id }: { id: string }) {
 
   return (
     <section id={id} className="section relative">
-      <div className="container">
+      <div className="container px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

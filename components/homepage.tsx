@@ -75,8 +75,8 @@ export function Homepage({ id }: HomepageProps) {
         transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
       />
 
-      <div className="container relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <div className="container relative z-10 px-4 sm:px-6">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center pt-20 lg:pt-0">
           {/* Left - Terminal & Content */}
           <div className="space-y-8">
             {/* Boot Sequence Terminal */}
@@ -129,8 +129,8 @@ export function Homepage({ id }: HomepageProps) {
                   <span className="text-gradient">Rahul</span>
                 </h1>
 
-                <div className="flex items-center gap-3 text-xl md:text-2xl lg:text-3xl font-semibold text-gray-400">
-                  <IconTerminal2 className="w-6 h-6 md:w-8 md:h-8 text-green-400" />
+                <div className="flex items-center gap-2 sm:gap-3 text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold text-gray-400">
+                  <IconTerminal2 className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 text-green-400 flex-shrink-0" />
                   <RoleTypeWriter
                     roles={roles}
                     typingSpeed={70}
@@ -141,7 +141,7 @@ export function Homepage({ id }: HomepageProps) {
               </div>
 
               {/* Description */}
-              <p className="text-gray-400 text-lg leading-relaxed max-w-xl">
+              <p className="text-gray-400 text-base sm:text-lg leading-relaxed max-w-xl">
                 I build modern web applications and decentralized solutions.
                 Self-taught developer passionate about <span className="text-purple-400">Web3</span>,
                 {" "}<span className="text-cyan-400">real-time systems</span>, and creating
@@ -180,18 +180,18 @@ export function Homepage({ id }: HomepageProps) {
               </div>
 
               {/* Quick Stats */}
-              <div className="flex gap-8 pt-4">
+              <div className="flex gap-6 sm:gap-8 pt-4">
                 <div>
-                  <div className="text-2xl font-bold text-gradient">10+</div>
-                  <div className="text-sm text-gray-500">Projects Built</div>
+                  <div className="text-xl sm:text-2xl font-bold text-gradient">10+</div>
+                  <div className="text-xs sm:text-sm text-gray-500">Projects Built</div>
                 </div>
                 <div>
-                  <div className="text-2xl font-bold text-gradient">2+</div>
-                  <div className="text-sm text-gray-500">Years Learning</div>
+                  <div className="text-xl sm:text-2xl font-bold text-gradient">2+</div>
+                  <div className="text-xs sm:text-sm text-gray-500">Years Learning</div>
                 </div>
                 <div>
-                  <div className="text-2xl font-bold text-gradient">12+</div>
-                  <div className="text-sm text-gray-500">Technologies</div>
+                  <div className="text-xl sm:text-2xl font-bold text-gradient">12+</div>
+                  <div className="text-xs sm:text-sm text-gray-500">Technologies</div>
                 </div>
               </div>
             </motion.div>
@@ -207,11 +207,11 @@ export function Homepage({ id }: HomepageProps) {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="relative"
           >
-            <TerminalWindow title="profile.tsx" className="w-full">
+            <TerminalWindow title="profile.tsx" className="w-full max-w-full overflow-hidden">
               <div className="space-y-3">
                 {/* Code-style profile */}
                 <div className="flex items-start gap-4">
-                  <div className="relative w-20 h-20 rounded-lg overflow-hidden border-2 border-purple-500/50 flex-shrink-0">
+                  <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-lg overflow-hidden border-2 border-purple-500/50 flex-shrink-0">
                     <Image
                       src="/rahul.jpg"
                       alt="Rahul Hingve"
@@ -220,7 +220,7 @@ export function Homepage({ id }: HomepageProps) {
                       priority
                     />
                   </div>
-                  <div className="font-mono text-sm space-y-1">
+                  <div className="font-mono text-xs sm:text-sm space-y-1 min-w-0">
                     <div>
                       <span className="token-keyword">const</span>{" "}
                       <span className="token-variable">developer</span>{" "}
